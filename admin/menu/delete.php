@@ -1,7 +1,7 @@
 <?
-	//°Ô½Ã¹° »èÁ¦
+	//ê²Œì‹œë¬¼ ì‚­ì œ
 	sql("delete from menu where idx='{$idx}' or parent='{$idx}'");
 	sql("delete from board where sidx='{$idx}'");
-	alert("¸Þ´º°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+	alert("ë©”ë‰´ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 	move($get_page);
 ?>

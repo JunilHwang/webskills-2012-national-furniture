@@ -1,5 +1,5 @@
 <?
 	sql("delete from member where idx='{$idx}'");
-	alert("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+	alert("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 	move($get_page);
 ?>

@@ -1,4 +1,4 @@
-<div class="wh h4" title="»çÀÌÆ®ÀÇ ¸Ş´º¸¦ °ü¸®ÇÕ´Ï´Ù.">»çÀÌÆ®ÀÇ ¸Ş´º¸¦ °ü¸®ÇÕ´Ï´Ù.</div>
+<div class="wh h4" title="ì‚¬ì´íŠ¸ì˜ ë©”ë‰´ë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.">ì‚¬ì´íŠ¸ì˜ ë©”ë‰´ë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.</div>
 <div class="form">
 	<table width="100%">
     	<colgroup>
@@ -10,16 +10,16 @@
         	<col width="15%" />
         </colgroup>
     	<tr class="al_c bg2">
-        	<th>¹øÈ£</th>
-        	<th>Å¸ÀÌÆ²</th>
-        	<th>¸Ş´º¼öÁ¤</th>
-        	<th>¸Ş´º»èÁ¦</th>
-        	<th>¼­ºêÃß°¡</th>
-        	<th>¼­ºêº¸±â</th>
+        	<th>ë²ˆí˜¸</th>
+        	<th>íƒ€ì´í‹€</th>
+        	<th>ë©”ë‰´ìˆ˜ì •</th>
+        	<th>ë©”ë‰´ì‚­ì œ</th>
+        	<th>ì„œë¸Œì¶”ê°€</th>
+        	<th>ì„œë¸Œë³´ê¸°</th>
         </tr>
         <?
 		$dep1_r = sql("select * from menu where parent='0'");
-		while($dep1 = mysql_fetch_assoc($dep1_r)){
+		while($dep1 = $dep1_r->fetch()){
 			$dep2_s = "select * from menu where parent='{$dep1['idx']}'";
 			$link = fetch($dep2_s);
 			$cnt = total($dep2_s);
@@ -27,21 +27,21 @@
         <tr class="al_c">
         	<td><?=$dep1['idx']?></td>
         	<td><a href="/index.php/page/<?=$dep1['idx']?>/<?=$link['idx']?>/" title="<?=$dep1['title']?>" onclick="window.open(this.href); return false;"><?=$dep1['title']?></a></td>
-        	<td><a href="<?="{$get_page}modify/{$dep1['idx']}/"?>" title="¼öÁ¤">¼öÁ¤</a></td>
-        	<td><a href="<?="{$get_page}delete/{$dep1['idx']}/"?>" title="¼öÁ¤">»èÁ¦</a></td>
-        	<td><a href="<?="{$get_page}add/{$dep1['idx']}/"?>" title="¼öÁ¤">Ãß°¡</a></td>
-        	<td><a id="dep1<?=$dep1['idx']?>" href="#" title="º¸±â" onclick="dep2view(<?=$dep1['idx']?>, <?=$cnt?>); return false;">º¸±â</a></td>
+        	<td><a href="<?="{$get_page}modify/{$dep1['idx']}/"?>" title="ìˆ˜ì •">ìˆ˜ì •</a></td>
+        	<td><a href="<?="{$get_page}delete/{$dep1['idx']}/"?>" title="ìˆ˜ì •">ì‚­ì œ</a></td>
+        	<td><a href="<?="{$get_page}add/{$dep1['idx']}/"?>" title="ìˆ˜ì •">ì¶”ê°€</a></td>
+        	<td><a id="dep1<?=$dep1['idx']?>" href="#" title="ë³´ê¸°" onclick="dep2view(<?=$dep1['idx']?>, <?=$cnt?>); return false;">ë³´ê¸°</a></td>
         </tr>
         <?
 			$i=1;
 			$dep2_r = sql($dep2_s);
-			while($dep2 = mysql_fetch_assoc($dep2_r)){
+			while($dep2 = $dep2_r->fetch()){
 		?>
         <tr class="al_c bg" id="dep2<?=$dep1['idx']?>_<?=$i?>" style="display:none;">
         	<td><?=$dep2['idx']?></td>
         	<td><a href="/index.php/page/<?=$dep2['parent']?>/<?=$dep2['idx']?>/" title="<?=$dep2['title']?>" onclick="window.open(this.href); return false;"><?=$dep2['title']?></a></td>
-        	<td><a href="<?="{$get_page}modify/{$dep2['idx']}/"?>" title="¼öÁ¤">¼öÁ¤</a></td>
-        	<td><a href="<?="{$get_page}delete/{$dep2['idx']}/"?>" title="¼öÁ¤">»èÁ¦</a></td>
+        	<td><a href="<?="{$get_page}modify/{$dep2['idx']}/"?>" title="ìˆ˜ì •">ìˆ˜ì •</a></td>
+        	<td><a href="<?="{$get_page}delete/{$dep2['idx']}/"?>" title="ìˆ˜ì •">ì‚­ì œ</a></td>
         	<td>-</td>
         	<td>-</td>
         </tr>
@@ -53,6 +53,6 @@
     </table>
     <? if($total != 0) echo $page_nate; ?>
     <div class="al_r">
-    	<input type="button" class="btn" title="¸ŞÀÎ¸Ş´ºÃß°¡" value="¸ŞÀÎ¸Ş´ºÃß°¡" onclick="link('<?=$get_page?>add/'); return false;" />
+    	<input type="button" class="btn" title="ë©”ì¸ë©”ë‰´ì¶”ê°€" value="ë©”ì¸ë©”ë‰´ì¶”ê°€" onclick="link('<?=$get_page?>add/'); return false;" />
     </div>
 </div>

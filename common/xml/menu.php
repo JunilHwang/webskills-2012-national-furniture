@@ -1,5 +1,5 @@
 <?
-//인클루드
+//명대（
 include_once("{$_SERVER['DOCUMENT_ROOT']}/include/dbcon.php");
 
 echo "<?xml version=\"1.0\" encoding=\"euc-kr\"?>";

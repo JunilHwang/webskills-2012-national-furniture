@@ -1,0 +1,35 @@
+/*body*/
+body { background:url(/img/main_bg.png) repeat-x;}
+
+/*header*/
+#header { float:left; width:1000px; height:100px;}
+.logo { float:left; width:300px; margin-top:10px;}
+.top { float:right; width:700px; height:15px; padding-top:15px; background:url(/img/top_line.png) no-repeat;}
+	.top_cnt { float:left; font-size:11px;}
+		.top_cnt li { margin-right:10px;}
+	.util_menu { float:right; font-size:11px;}
+		.util_menu a { margin-left:10px;}
+
+/*navigation*/
+.gnb { float:right; width:700px; height:70px;}
+
+/*animation*/
+#ani { float:left; width:1000px; height:350px; margin-bottom:20px;}
+.banner { float:left; width:468px; height:60px; margin:10px 20px;}
+
+/*content*/
+#content { float:left; width:1000px;}
+	.title { float:left; margin-bottom:5px;}
+	.board { float:left; width:260px; margin:0 20px;}
+		.board ul { margin-bottom:5px; width:260px;}
+		.board li.li2 { float:right; color:#888;}
+	.list { float:left; margin:0 20px; width:470px;}
+		.list ul { width:90px; text-align:center; margin:0 13px}
+		.list li { width:90px; font-size:11px; margin-bottom:3px;}
+		.list li1.li1 img { width:90px; height:60px;}
+		.list li.li2 { font-weight:bold;}
+	.call { float:left; margin-left:20px; display:inline;}
+	.booking { float:left; width:260px; margin:10px 20px;}
+		.booking img.img2 { float:right;}
+	.search { float:left; width:150px; margin:10px 0 10px 20px}
+		.search img.img2 { margin-top:3px;}

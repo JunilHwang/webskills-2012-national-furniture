@@ -1,28 +1,28 @@
 <?
-	//±««—∞ÀªÁ
-	access($_SESSION['lv'] != 2, "∞¸∏Æ¿⁄¥¬ ¿ÃøÎ«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+	//Í∂åÌïúÍ≤ÄÏÇ¨
+	access($_SESSION['lv'] != 2, "Í¥ÄÎ¶¨ÏûêÎäî Ïù¥Ïö©Ìï† Ïàò ÏóÜÏäµÎãàÎã§.");
 ?>
 <div id="reserved">
 <div class="wh mb15">
-	<input type="button" class="btn3" title="«ˆ»≤¡∂»∏∆‰¿Ã¡ˆ" value="«ˆ»≤¡∂»∏∆‰¿Ã¡ˆ" onclick="link('<?="{$get_page}now/"?>'); return false;" />
+	<input type="button" class="btn3" title="ÌòÑÌô©Ï°∞ÌöåÌéòÏù¥ÏßÄ" value="ÌòÑÌô©Ï°∞ÌöåÌéòÏù¥ÏßÄ" onclick="link('<?="{$get_page}now/"?>'); return false;" />
 </div>
 	<?
         $fur_s = "select * from furniture where now=1";
         $total = total($fur_s);
         $start = 12 * ($page_num - 1);
-        $page_nate = page_nate($page_num, $total, "{$get_page}list/&&/", "¿Ã¿¸∆‰¿Ã¡ˆ", "¥Ÿ¿Ω∆‰¿Ã¡ˆ", 12);
+        $page_nate = page_nate($page_num, $total, "{$get_page}list/&&/", "Ïù¥Ï†ÑÌéòÏù¥ÏßÄ", "Îã§ÏùåÌéòÏù¥ÏßÄ", 12);
         $fur_r = sql("{$fur_s} order by binary(type) asc, binary(fname) asc limit $start, 12");
     ?>
-    <div class="wh" title="√— ∞‘Ω√π∞ : <?=$total?>∞≥">√— ∞‘Ω√π∞ : <?=$total?>∞≥</div>
+    <div class="wh" title="Ï¥ù Í≤åÏãúÎ¨º : <?=$total?>Í∞ú">Ï¥ù Í≤åÏãúÎ¨º : <?=$total?>Í∞ú</div>
     <div class="form">
         <div class="furniture">
             <?
-            while($fur = mysql_fetch_assoc($fur_r)){
+            while($fur = $fur_r->fetch()){
             ?>
             <ul>
                 <li class="li1"><img src="/data/furniture/thum_<?=$fur['file_name']?>" title="<?=$fur['fname']?>" alt="<?=$fur['fname']?>" /></li>
                 <li><b>[<?=$fur['type']?>]</b><?=$fur['fname']?></li>
-                <li><a title="∞°±∏ªÛºº∫∏±‚" href="<?="{$get_page}view/{$fur['idx']}/"?>">∞°±∏ªÛºº∫∏±‚</a></li>
+                <li><a title="Í∞ÄÍµ¨ÏÉÅÏÑ∏Î≥¥Í∏∞" href="<?="{$get_page}view/{$fur['idx']}/"?>">Í∞ÄÍµ¨ÏÉÅÏÑ∏Î≥¥Í∏∞</a></li>
             </ul>
             <?
             }

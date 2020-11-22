@@ -1,22 +1,20 @@
-<?
-	//DBÁ¢¼Ó
-	$connect = mysql_connect("localhost", "root", "apmsetup");
-	mysql_select_db("001", $connect);
-	
-	/*----------------- mysql ÇÔ¼ö -----------------*/
+<?php
+
+	/*----------------- mysql í•¨ìˆ˜ -----------------*/
 	function sql($str){
-		global $connect;
-		return mysql_query($str);
+    //DBì ‘ì†
+    $db = new PDO("sqlite:". dirname(__DIR__) ."/001.db");
+		$result = $db->query($str);
+		$db = null;
+		return $result;
 	}
 	
 	function fetch($str){
-		global $connect;
-		return mysql_fetch_assoc(mysql_query($str));
+		return sql($str)->fetch();
 	}
 	
 	function total($str){
-		global $connect;
-		return mysql_num_rows(mysql_query($str));
+		return sql($str)->rowCount();
 	}
 	
 	function get_column($arr, $cancel){
@@ -27,8 +25,6 @@
 	}
 	
 	function query($action, $table, $column){
-		global $connect;
-		
 		switch($action){
 			case 'insert' :
 				$query[] = " insert into {$table} set ";
@@ -42,7 +38,7 @@
 		}
 		$query[] = $column;
 		$query = implode("", $query);
-		mysql_query($query) or die($query.mysql_error());
+		sql($query);
 	}
-	/*----------------- //mysql ÇÔ¼ö -----------------*/
+	/*----------------- //mysql í•¨ìˆ˜ -----------------*/
 ?>

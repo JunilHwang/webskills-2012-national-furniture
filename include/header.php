@@ -1,18 +1,18 @@
 <?
-	//DBÁ¢¼Ó or ÇÔ¼ö include
+	//DBì ‘ì† or í•¨ìˆ˜ include
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/lib.php");
 	
-	//»çÀÌÆ® Á¤º¸ °¡Á®¿À±â
+	//ì‚¬ì´íŠ¸ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	$site = fetch("select * from site");
 	
-	//ÆäÀÌÁö Á¤º¸ °¡Á®¿À±â
+	//íŽ˜ì´ì§€ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	if($current == 'main'){
 		$site_title = $site['title'];
-		$meta_keywords = "³ª´®°¡±¸, ±â´É°æ±â´ëÈ¸, ±â´É°æ±â´ëÈ¸ ÀÔ»óÀÚ, °¡±¸´ë¿©";
-		$meta_description = "³ª´®°¡±¸ È¨ÆäÀÌÁö¿¡ ¿À½Å°É È¯¿µÇÕ´Ï´Ù.";
+		$meta_keywords = "ë‚˜ëˆ”ê°€êµ¬, ê¸°ëŠ¥ê²½ê¸°ëŒ€íšŒ, ê¸°ëŠ¥ê²½ê¸°ëŒ€íšŒ ìž…ìƒìž, ê°€êµ¬ëŒ€ì—¬";
+		$meta_description = "ë‚˜ëˆ”ê°€êµ¬ í™ˆíŽ˜ì´ì§€ì— ì˜¤ì‹ ê±¸ í™˜ì˜í•©ë‹ˆë‹¤.";
 		$css = "index";
 	} else {
-		//Å×ÀÌºí ¼±ÅÃ
+		//í…Œì´ë¸” ì„ íƒ
 		if($page_type == 'admin'){
 			$menu_table = "admin_menu";
 			$xml_base = "admin_";
@@ -27,7 +27,7 @@
 		$sub = fetch("select * from {$menu_table} where idx='{$sidx}'");
 		$page = fetch("select * from {$menu_table} where parent='{$midx}' limit 1");
 		
-		//¼­ºê ÆäÀÌÁö Á¤º¸ ÀúÀå
+		//ì„œë¸Œ íŽ˜ì´ì§€ ì •ë³´ ì €ìž¥
 		$main_title = $main['title'];
 		$sub_title = $sub['title'];
 		$main_od = $main['od'];
@@ -36,7 +36,7 @@
 		$meta_keywords = $meta_description = $site_title;
 		$css = "sub";
 		
-		//ÀÎÅ¬·çµå ÆÄÀÏ ¼±ÅÃ
+		//ì¸í´ë£¨ë“œ íŒŒì¼ ì„ íƒ
 		if($page_type == 'admin'){
 			$include_file = $action ? $action : $sidx;
 			$direct = $sidx;
@@ -63,18 +63,18 @@
 		}
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
-<meta name="keywords" content="<?=$meta_keywords?>" />
-<meta name="description" content="<?=$meta_description?>" />
-<link rel="stylesheet" href="/common/css/common.css" charset="euc-kr" />
-<link rel="stylesheet" href="/common/css/<?=$css?>.css" charset="euc-kr" />
-<link rel="stylesheet" href="/common/css/print.css" charset="euc-kr" media="print" />
-<script type="text/javascript" src="/common/js/common.js"></script>
-<script type="text/javascript" src="/common/js/flash.js"></script>
-<title><?=$site_title?></title>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="<?=$meta_keywords?>" />
+  <meta name="description" content="<?=$meta_description?>" />
+  <link rel="stylesheet" href="/common/css/common.css" />
+  <link rel="stylesheet" href="/common/css/<?=$css?>.css" />
+  <link rel="stylesheet" href="/common/css/print.css" media="print" />
+  <script src="/common/js/common.js"></script>
+  <script src="/common/js/flash.js"></script>
+  <title><?=$site_title?></title>
 </head>
 
 <body <? if($current == 'sub') echo "onload=\"quick('top_btn', 60);\""; ?>>
@@ -94,10 +94,10 @@
 					$fur_total = total("select * from furniture where now='1'");
 					$re_total = total("select * from reser");
 				?>
-                    <li title="È¸¿ø : <?=$member_total?>¸í">È¸¿ø <?=$member_total?>¸í</li>
-                    <li title="°¡±¸¼ö <?=$fur_total?>°³">°¡±¸¼ö <?=$fur_total?>°³</li>
-                    <li title="½ÅÃ»µÈ °¡±¸ <?=$hope_total?>°³">½ÅÃ»µÈ °¡±¸ <?=$hope_total?>°³</li>
-                    <li title="¿¹¾àµÈ °¡±¸ <?=$re_total?>°³">¿¹¾àµÈ °¡±¸ <?=$re_total?>°³</li>
+                    <li title="íšŒì› : <?=$member_total?>ëª…">íšŒì› <?=$member_total?>ëª…</li>
+                    <li title="ê°€êµ¬ìˆ˜ <?=$fur_total?>ê°œ">ê°€êµ¬ìˆ˜ <?=$fur_total?>ê°œ</li>
+                    <li title="ì‹ ì²­ëœ ê°€êµ¬ <?=$hope_total?>ê°œ">ì‹ ì²­ëœ ê°€êµ¬ <?=$hope_total?>ê°œ</li>
+                    <li title="ì˜ˆì•½ëœ ê°€êµ¬ <?=$re_total?>ê°œ">ì˜ˆì•½ëœ ê°€êµ¬ <?=$re_total?>ê°œ</li>
                 </ul>
             </div>
             
@@ -106,15 +106,15 @@
                 <img src="/img/cms.png" title="CMS" alt="CMS" onclick="link('/index.php/admin/site/menu/'); return false;" />                
                 <? } ?>
             	<? if($_SESSION['lv']){ ?>
-                <img src="/img/logout.png" title="·Î±×¾Æ¿ô" alt="·Î±×¾Æ¿ô" onclick="link('/page/logout.php'); return false;" />
-                <a href="/index.php/page/member/mypage/" title="¸¶ÀÌÆäÀÌÁö">¸¶ÀÌÆäÀÌÁö</a>
+                <img src="/img/logout.png" title="ë¡œê·¸ì•„ì›ƒ" alt="ë¡œê·¸ì•„ì›ƒ" onclick="link('/page/logout.php'); return false;" />
+                <a href="/index.php/page/member/mypage/" title="ë§ˆì´íŽ˜ì´ì§€">ë§ˆì´íŽ˜ì´ì§€</a>
                 <? } else { ?>
-                <a href="/page/login.php" title="·Î±×ÀÎ" onclick="window.open(this.href, 'login', 'width=300px, height=80px, left=200px, top=200px'); return false;">·Î±×ÀÎ</a>
-                <a href="/index.php/page/3/9/" title="È¸¿ø°¡ÀÔ">È¸¿ø°¡ÀÔ</a>
+                <a href="/page/login.php" title="ë¡œê·¸ì¸" onclick="window.open(this.href, 'login', 'width=300px, height=80px, left=200px, top=200px'); return false;">ë¡œê·¸ì¸</a>
+                <a href="/index.php/page/3/9/" title="íšŒì›ê°€ìž…">íšŒì›ê°€ìž…</a>
                 <? } ?>
-                <a href="/index.php/page/2/8/" title="°Ë»ö">°Ë»ö</a>
-                <a href="mailto:<?=hex2($site['email'])?>" title="¸ÞÀÏÃ»±¸">¸ÞÀÏÃ»±¸</a>
-                <a href="/index.php/page/member/sitemap/" title="»çÀÌÆ®¸Ê">»çÀÌÆ®¸Ê</a>
+                <a href="/index.php/page/2/8/" title="ê²€ìƒ‰">ê²€ìƒ‰</a>
+                <a href="mailto:<?=hex2($site['email'])?>" title="ë©”ì¼ì²­êµ¬">ë©”ì¼ì²­êµ¬</a>
+                <a href="/index.php/page/member/sitemap/" title="ì‚¬ì´íŠ¸ë§µ">ì‚¬ì´íŠ¸ë§µ</a>
             </div>
         </div>
         

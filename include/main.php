@@ -29,10 +29,10 @@ AC_FL_RunContent(
 <!-- content -->
 <div id="content">
 	<div class="board">
-    	<div class="title"><img src="/img/title1.png" title="∞‘Ω√∆« | bold" alt="∞‘Ω√∆« | bold" /><a href="/index.php/page/5/15/"><img src="/img/more1.png" title="more" alt="more" /></a>        </div>
+    	<div class="title"><img src="/img/title1.png" title="Í≤åÏãúÌåê | bold" alt="Í≤åÏãúÌåê | bold" /><a href="/index.php/page/5/15/"><img src="/img/more1.png" title="more" alt="more" /></a>        </div>
 		<?
         	$board_r = sql("select * from board where sidx='15' order by idx desc limit 4");
-			while($board = mysql_fetch_assoc($board_r)){
+			while($board = $board_r->fetch()){
 				$subject = cut($board['subject'], 0, 28);
 		?>
         <ul>
@@ -44,27 +44,27 @@ AC_FL_RunContent(
     
 	<div class="list">
     	<div class="title">
-        <img src="/img/title2.png" title="∞°±∏∏Ò∑œ | Furniture List" alt="∞°±∏∏Ò∑œ | Furniture List" />
+        <img src="/img/title2.png" title="Í∞ÄÍµ¨Î™©Î°ù | Furniture List" alt="Í∞ÄÍµ¨Î™©Î°ù | Furniture List" />
         <a href="/index.php/page/5/15/"><img src="/img/more1.png" title="more" alt="more" /></a>
         </div>
 		<?
         	$fur_r = sql("select * from furniture where now=1 order by binary(fname) asc limit 4");
-			while($fur = mysql_fetch_assoc($fur_r)){
+			while($fur = $fur_r->fetch()){
 				$fname = cut($fur['fname'], 0, 10);
 		?>
         <ul>
             <li class="li1"><img src="/data/furniture/thum_<?=$fur['file_name']?>" alt="<?=$fur['fname']?>" width="90px" height="60px" title="<?=$fur['fname']?>" /></li>
             <li class="li2"><?=$fname?></li>
-            <li class="li3">[<a title="∞°±∏ªÛºº∫∏±‚" href="<?="/index.php/page/3/11/view/{$fur['idx']}/"?>">∞°±∏ªÛºº∫∏±‚</a>]</li>
+            <li class="li3">[<a title="Í∞ÄÍµ¨ÏÉÅÏÑ∏Î≥¥Í∏∞" href="<?="/index.php/page/3/11/view/{$fur['idx']}/"?>">Í∞ÄÍµ¨ÏÉÅÏÑ∏Î≥¥Í∏∞</a>]</li>
         </ul>
         <? } ?>
     </div>
     
-    <div class="call"><img src="/img/call.png" title="∞Ì∞¥ºæ≈Õ" alt="∞Ì∞¥ºæ≈Õ" /></div>
+    <div class="call"><img src="/img/call.png" title="Í≥†Í∞ùÏÑºÌÑ∞" alt="Í≥†Í∞ùÏÑºÌÑ∞" /></div>
 
     <div class="booking">
-    	<a href="/index.php/page/3/11/"><img src="/img/booking.png" title="Furniture Booking | πŸ∑Œ∞°±‚" alt="Furniture Booking | πŸ∑Œ∞°±‚" /></a>
-        <img src="/img/booking_img.png" title="¥Îø©øπæ‡" alt="¥Îø©øπæ‡" class="img2" />
+    	<a href="/index.php/page/3/11/"><img src="/img/booking.png" title="Furniture Booking | Î∞îÎ°úÍ∞ÄÍ∏∞" alt="Furniture Booking | Î∞îÎ°úÍ∞ÄÍ∏∞" /></a>
+        <img src="/img/booking_img.png" title="ÎåÄÏó¨ÏòàÏïΩ" alt="ÎåÄÏó¨ÏòàÏïΩ" class="img2" />
     </div>
     
     <div class="banner">
@@ -98,11 +98,11 @@ AC_FL_RunContent(
         <form action="<?="http://127.0.0.1/index.php/page/2/8/"?>" method="post">
      	<div class="main_s">
         	<input type="hidden" name="type" value="total" />
-        	<input type="text" size="15" style="height:14px; padding:1px;" title="∞ÀªˆæÓ" name="key" />
-            <input type="submit" class="btn2" title="∞Àªˆ" value="∞Àªˆ" />
+        	<input type="text" size="15" style="height:14px; padding:1px;" title="Í≤ÄÏÉâÏñ¥" name="key" />
+            <input type="submit" class="btn2" title="Í≤ÄÏÉâ" value="Í≤ÄÏÉâ" />
         </div>
         </form>
-        <img src="/img/search2.png" alt="ªÁ¿Ã∆Æø° µÓ∑œµ» ∞°±∏µÈ¿ª ∞Àªˆ«’¥œ¥Ÿ." title="ªÁ¿Ã∆Æø° µÓ∑œµ» ∞°±∏µÈ¿ª ∞Àªˆ«’¥œ¥Ÿ." class="img2" />
+        <img src="/img/search2.png" alt="ÏÇ¨Ïù¥Ìä∏Ïóê Îì±Î°ùÎêú Í∞ÄÍµ¨Îì§ÏùÑ Í≤ÄÏÉâÌï©ÎãàÎã§." title="ÏÇ¨Ïù¥Ìä∏Ïóê Îì±Î°ùÎêú Í∞ÄÍµ¨Îì§ÏùÑ Í≤ÄÏÉâÌï©ÎãàÎã§." class="img2" />
     </div>
 </div>
 <!-- //content -->

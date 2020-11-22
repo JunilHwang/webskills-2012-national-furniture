@@ -1,32 +1,32 @@
 <?
 	if($_POST['action']){
-		//ºñ¹Ð¹øÈ£ ¾ÏÈ£È­
+		//ë¹„ë°€ë²ˆí˜¸ ì•”í˜¸í™”
 		if($_POST['pw']) $_POST['pw'] = md5($_POST['pw']);
 		if($_POST['re_pw']) $_POST['re_pw'] = md5($_POST['re_pw']);
 		
-		//¾×¼Ç °ª¿¡ µû¶ó °Ë»ç
+		//ì•¡ì…˜ ê°’ì— ë”°ë¼ ê²€ì‚¬
 		switch($_POST['action']){
 			case 'insert' :
 				$parent = $idx ? $idx : 0;
 				$menu = fetch("select * from menu where parent='{$parent}' order by od desc limit 1");
 				$od = $menu['od'] ? $menu['od']+1 : 0;
 				$add_sql .= ", od='{$od}', parent='{$parent}'";
-				$msg = "¸Þ´º°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.";
+				$msg = "ë©”ë‰´ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			case 'update' :
 				$add_sql .= " where idx='{$idx}'";
-				$msg = "¸Þ´º°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+				$msg = "ë©”ë‰´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 		}
 		
-		//Äõ¸®
+		//ì¿¼ë¦¬
 		$cancel .= "action/";
 		$column = get_column($_POST, $cancel);
 		query($_POST['action'], "menu", "{$column} {$add_sql}");
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//íŽ˜ì´ì§€ì´ë™
 		if($msg) alert($msg);
 		move($url);
 	}

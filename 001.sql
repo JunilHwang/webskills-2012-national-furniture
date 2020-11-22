@@ -1,41 +1,13 @@
-# phpMyAdmin SQL Dump
-# version 2.5.6
-# http://www.phpmyadmin.net
-#
-# 호스트: localhost
-# 처리한 시간: 12-08-30 09:06 
-# 서버 버전: 4.0.18
-# PHP 버전: 4.3.6
-# 
-# 데이터베이스 : `001`
-# 
-
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `admin_menu`
-#
-
 CREATE TABLE `admin_menu` (
   `idx` varchar(100) NOT NULL default '',
   `parent` varchar(100) NOT NULL default '',
   `title` varchar(100) NOT NULL default '',
   `od` int(11) NOT NULL default '0'
-) TYPE=MyISAM;
-
-#
-# 테이블의 덤프 데이터 `admin_menu`
-#
+);
 
 INSERT INTO `admin_menu` VALUES ('site', '0', '관리자 페이지', 0);
 INSERT INTO `admin_menu` VALUES ('menu', 'site', '메뉴관리', 0);
 INSERT INTO `admin_menu` VALUES ('member', 'site', '회원관리', 1);
-
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `board`
-#
 
 CREATE TABLE `board` (
   `idx` int(11) NOT NULL auto_increment,
@@ -45,11 +17,7 @@ CREATE TABLE `board` (
   `content` text NOT NULL,
   `date` date NOT NULL default '0000-00-00',
   PRIMARY KEY  (`idx`)
-) TYPE=MyISAM AUTO_INCREMENT=15 ;
-
-#
-# 테이블의 덤프 데이터 `board`
-#
+) AUTO_INCREMENT=15 ;
 
 INSERT INTO `board` VALUES (1, 15, 'ㄻㄴㅇㄹㅇㅁ', 'ㅁㄴㅇㄻㄴ', 'ㄴㄹㅇㅁㄴㄻㄴ', '0000-00-00');
 INSERT INTO `board` VALUES (2, 15, 'ㄻㄴㅇㄻㄴㅇㄹ', 'ㅁㅇㄴㄹㄴㅁ', 'ㄴㅇㅁㄹㄴㅁㅇㄹ', '0000-00-00');
@@ -65,33 +33,17 @@ INSERT INTO `board` VALUES (12, 15, '스킬스퍼니쳐 홈페이지가 완성�
 INSERT INTO `board` VALUES (13, 15, '스킬스퍼니쳐 홈페이지가 완성되었습니다.', 'ㄴㅁㅇㅁㄴ', '스킬스퍼니쳐 홈페이지가 완성되었습니다.', '2012-08-28');
 INSERT INTO `board` VALUES (14, 15, '제목', '작성자', '\r\n\r\n\r\n\r\n\r\n\r\n\r\nalert=\\\'ara\\\'</script>\r\nv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nd\r\ng\r\ndsfs\r\nd\r\nf\r\nv\r\nxcv\r\nc\r\n', '2012-08-29');
 
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `default_menu`
-#
-
 CREATE TABLE `default_menu` (
   `idx` varchar(100) NOT NULL default '',
   `parent` varchar(100) NOT NULL default '',
   `title` varchar(100) NOT NULL default '',
   `od` int(11) NOT NULL default '0',
   `lv` char(1) NOT NULL default ''
-) TYPE=MyISAM;
-
-#
-# 테이블의 덤프 데이터 `default_menu`
-#
+);
 
 INSERT INTO `default_menu` VALUES ('member', '0', '멤버쉽페이지', 0, '');
 INSERT INTO `default_menu` VALUES ('sitemap', 'member', '사이트맵', 0, '');
 INSERT INTO `default_menu` VALUES ('mypage', 'member', '마이페이지', 1, '1');
-
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `furniture`
-#
 
 CREATE TABLE `furniture` (
   `idx` int(11) NOT NULL auto_increment,
@@ -105,11 +57,8 @@ CREATE TABLE `furniture` (
   `name` varchar(100) NOT NULL default '',
   `email` varchar(100) NOT NULL default '',
   PRIMARY KEY  (`idx`)
-) TYPE=MyISAM AUTO_INCREMENT=11 ;
+) AUTO_INCREMENT=11 ;
 
-#
-# 테이블의 덤프 데이터 `furniture`
-#
 
 INSERT INTO `furniture` VALUES (1, '책상', '가구입니다.', 10, 'ㄴㅇㄻㄴㅋㄹㅇ', '45.jpg', '1346211554_22964.jpg', '1', '', '');
 INSERT INTO `furniture` VALUES (2, '책상', '가구입니다.', 33, '1234231321', '10.jpg', '1346211569_14813.jpg', '1', '', '');
@@ -122,11 +71,6 @@ INSERT INTO `furniture` VALUES (8, '옷장', 'ㅁㄴㅇㄻㄴ', 12, 'ㄹㅇㅁ�
 INSERT INTO `furniture` VALUES (9, '책상', '가구', 56, '23156456ㅋㅇㄹㄴㅁㅇㄹㅇㄴㅁㄻㄴㄻㄴ', '52.jpg', '1346220724_13454.jpg', '1', '', '');
 INSERT INTO `furniture` VALUES (10, '책상', '가구', 11, '내용', '로고심볼.jpg', '1346283338_1147.jpg', '0', '황준일', 'a@a.a');
 
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `member`
-#
 
 CREATE TABLE `member` (
   `idx` int(11) NOT NULL auto_increment,
@@ -137,23 +81,13 @@ CREATE TABLE `member` (
   `cell` varchar(100) NOT NULL default '',
   `lv` char(1) NOT NULL default '',
   PRIMARY KEY  (`idx`)
-) TYPE=MyISAM AUTO_INCREMENT=7 ;
-
-#
-# 테이블의 덤프 데이터 `member`
-#
+) AUTO_INCREMENT=7 ;
 
 INSERT INTO `member` VALUES (1, '관리자', 'skills@furniture.net', '81dc9bdb52d04dc20036dbd8313ed055', '031-505-4938', '010-3011-4883', '3');
 INSERT INTO `member` VALUES (2, '황준일', 'a@a.a', '81dc9bdb52d04dc20036dbd8313ed055', '123-1234-1234', '', '1');
 INSERT INTO `member` VALUES (3, '테스트', 'a@a.aa', '81dc9bdb52d04dc20036dbd8313ed055', '010-0000-000', '1241256434', '1');
 INSERT INTO `member` VALUES (4, '이름름', 'a@a.b', '81dc9bdb52d04dc20036dbd8313ed055', '010-0000-000', '156a48wtwa', '1');
 INSERT INTO `member` VALUES (6, '가구관리자', 'furniture@furniture.net', '81dc9bdb52d04dc20036dbd8313ed055', '031-000-0000', '', '2');
-
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `menu`
-#
 
 CREATE TABLE `menu` (
   `idx` int(11) NOT NULL auto_increment,
@@ -164,11 +98,7 @@ CREATE TABLE `menu` (
   `lv` char(1) NOT NULL default '',
   `content` text NOT NULL,
   PRIMARY KEY  (`idx`)
-) TYPE=MyISAM AUTO_INCREMENT=18 ;
-
-#
-# 테이블의 덤프 데이터 `menu`
-#
+) AUTO_INCREMENT=18 ;
 
 INSERT INTO `menu` VALUES (1, 0, '소개', 0, '', '', '');
 INSERT INTO `menu` VALUES (2, 0, '통합검색', 1, '', '', '');
@@ -186,12 +116,6 @@ INSERT INTO `menu` VALUES (13, 4, '신청가구조회', 1, 'cnt', '1', '');
 INSERT INTO `menu` VALUES (14, 4, '대여업무조회', 2, 'lend', '1', '');
 INSERT INTO `menu` VALUES (15, 5, '자유게시판', 0, 'board', '', '');
 
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `reser`
-#
-
 CREATE TABLE `reser` (
   `idx` int(11) NOT NULL auto_increment,
   `name` varchar(100) NOT NULL default '',
@@ -204,30 +128,16 @@ CREATE TABLE `reser` (
   `zip` varchar(100) NOT NULL default '',
   `date` date NOT NULL default '0000-00-00',
   PRIMARY KEY  (`idx`)
-) TYPE=MyISAM AUTO_INCREMENT=18 ;
-
-#
-# 테이블의 덤프 데이터 `reser`
-#
+) AUTO_INCREMENT=18 ;
 
 INSERT INTO `reser` VALUES (15, '', '', '00488', '서랍장', '7', 38, '2', '', '2013-05-29');
 INSERT INTO `reser` VALUES (16, '', '', '72518', '서랍장', '7', 3, '2', '', '2012-11-29');
 INSERT INTO `reser` VALUES (17, '황준일', 'a@a.a', '', 'ㅋ', '4', 5, '2', '1346283544_23597.zip', '2012-11-29');
 
-# --------------------------------------------------------
-
-#
-# 테이블 구조 `site`
-#
-
 CREATE TABLE `site` (
   `title` varchar(100) NOT NULL default '',
   `email` varchar(100) NOT NULL default '',
   UNIQUE KEY `title` (`title`)
-) TYPE=MyISAM;
-
-#
-# 테이블의 덤프 데이터 `site`
-#
+);
 
 INSERT INTO `site` VALUES ('나눔가구', 'skills@furniture.net');

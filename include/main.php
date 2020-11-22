@@ -48,7 +48,7 @@ AC_FL_RunContent(
         <a href="/index.php/page/5/15/"><img src="/img/more1.png" title="more" alt="more" /></a>
         </div>
 		<?
-        	$fur_r = sql("select * from furniture where now=1 order by binary(fname) asc limit 4");
+        	$fur_r = sql("select * from furniture where now = 1 order by fname asc limit 4");
 			while($fur = $fur_r->fetch()){
 				$fname = cut($fur['fname'], 0, 10);
 		?>

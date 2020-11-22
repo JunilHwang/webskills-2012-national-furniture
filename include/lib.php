@@ -1,8 +1,8 @@
 <?
-	//¼¼¼Ç ½ÃÀÛ
+	//ì„¸ì…˜ ì‹œì‘
 	session_start();
 	
-	//ÁÖ¼Ò°ª ÀúÀå
+	//ì£¼ì†Œê°’ ì €ì¥
 	$get = explode("/", $_SERVER['PATH_INFO']);
 	$page_type = $get[1];
 	$midx = $get[2];
@@ -14,15 +14,15 @@
 	$get_page = "/index.php/{$page_type}/{$midx}/{$sidx}/";
 	$current = $page_type && $midx && $sidx ? 'sub' : 'main';
 	
-	//DBÁ¢¼Ó
+	//DBì ‘ì†
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/dbcon.php");
 	
-	//¸Ş½ÃÁö Ãâ·Â
+	//ë©”ì‹œì§€ ì¶œë ¥
 	function alert($str){
 		echo "<script type=\"text/javascript\">alert('{$str}')</script>";
 	}
 	
-	//ÆäÀÌÁö ÀÌµ¿
+	//í˜ì´ì§€ ì´ë™
 	function move($str){
 		echo "<script type='text/javascript'>";
 			echo $str ? "document.location.replace('{$str}')" : "history.back();";
@@ -30,7 +30,7 @@
 		exit;
 	}
 	
-	//¿¢¼¼½º
+	//ì—‘ì„¸ìŠ¤
 	function access($bool, $msg, $url=false){
 		if(!$bool){
 			alert($msg);
@@ -38,14 +38,14 @@
 		}
 	}
 	
-	//ÀÌ¸ŞÀÏ ºÎÈ£È­
+	//ì´ë©”ì¼ ë¶€í˜¸í™”
 	function hex2($str){
 		$strlen = strlen($str);
 		for($i=0; $i<$strlen; $i++) $hex.= "&#x".bin2hex(substr($str, $i, 1)).';';
 		return $hex;
 	}
 	
-	//º»¹® ÀÌ¸ŞÀÏ ºÎÈ£È­
+	//ë³¸ë¬¸ ì´ë©”ì¼ ë¶€í˜¸í™”
 	function hex($str){
 		preg_match_all("([a-zA-z0-9]+@[a-zA-z0-9]+\.[a-zA-z0-9._-]+)", $str, $a, PREG_SET_ORDER);
 		for($i=0; $i<sizeof($i); $i++){
@@ -54,13 +54,13 @@
 		return $str;
 	}
 	
-	//ÀÚµ¿ ÀÌ¸ŞÀÏ ºÎÈ£È­
+	//ìë™ ì´ë©”ì¼ ë¶€í˜¸í™”
 	function arr_hex($arr){
 		foreach($arr as $key=>$val) $arr[$key] = hex($val);
 		return $arr;
 	}
 	
-	//º¸¾È
+	//ë³´ì•ˆ
 	function str_change($str){
 		$str = preg_replace("!<script(.*?)<\/script>!is", "", $str);
 		$str = preg_replace("!<iframe(.*?)<\/iframe>!is", "", $str);
@@ -71,13 +71,13 @@
 		return $str;
 	}
 	
-	//ÀÚµ¿º¸¾È
+	//ìë™ë³´ì•ˆ
 	function arr_change($arr){
 		foreach($arr as $key=>$val) $arr[$key] = str_change($val);
 		return $arr;
 	}
 	
-	//ÀÎÄÚµù
+	//ì¸ì½”ë”©
 	function encode($str){
 		$str = base64_encode($str);
 		$str = str_replace('/', '^2', $str);
@@ -85,7 +85,7 @@
 		return $str;
 	}
 	
-	//µğÄÚµù
+	//ë””ì½”ë”©
 	function decode($str){
 		$str = str_replace('^2', '/', $str);
 		$str = str_replace('$4', '+', $str);
@@ -93,18 +93,13 @@
 		return $str;
 	}
 	
-	//±ÛÀÚ¼ö Á¦ÇÑ
+	//ê¸€ììˆ˜ ì œí•œ
 	function cut($str, $stt, $len){
 		$strlen = strlen($str);
-		if($strlen > $len){
-			for($p=$len; $p>=$stt && ord($str[$p-1])>=127; $p--);
-			$len = ($len-$p)%2 == $stt ? $len : $len+1;
-			$str = substr($str, $stt, $len).'..';
-		}
-		return $str;
+		return $strlen > $len ? mb_substr($str, $stt, $len / 2, "utf-8") . "..." : $str;
 	}
 	
-	//ÆäÀÌÂ¡
+	//í˜ì´ì§•
 	function page_nate($num, $total, $url, $prev, $next, $line=5){
 		$url = explode("&&", $url);
 		$last_page = ceil($total/$line);
@@ -134,11 +129,11 @@
 		return $page_nate;
 	}
 	
-	//ÆÄÀÏ ¾÷·Îµå
+	//íŒŒì¼ ì—…ë¡œë“œ
 	function file_uploaded($file){
 		$chk = strtolower(array_pop(explode(".", basename($file['name']))));
 		$chk_name = array('jpeg', 'jpg', 'png', 'gif');
-		access(in_array($chk, $chk_name), "ÀÌ¹ÌÁö ÆÄÀÏ¸¸ ¾÷·Îµå°¡ °¡´ÉÇÕ´Ï´Ù.");
+		access(in_array($chk, $chk_name), "ì´ë¯¸ì§€ íŒŒì¼ë§Œ ì—…ë¡œë“œê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 		$file_name = time()."_".rand().".{$chk}";
 		$dir = "{$_SERVER['DOCUMENT_ROOT']}/data/furniture/{$file_name}";
 		$thum_dir = "{$_SERVER['DOCUMENT_ROOT']}/data/furniture/thum_{$file_name}";
@@ -149,7 +144,7 @@
 		return $file_name;
 	}
 	
-	//ºñÀ²Á¶Á¤
+	//ë¹„ìœ¨ì¡°ì •
 	function resize($w, $h){
 		$s = 150;
 		if($w > $h){
@@ -168,7 +163,7 @@
 		return $resize;
 	}
 	
-	//½æ³×ÀÏ
+	//ì¸ë„¤ì¼
 	function thum($dir, $thum_dir, $type, $w, $h){
 		$size = getimagesize($dir);
 		$n_name = imagecreatetruecolor($w,$h);
@@ -192,12 +187,12 @@
 		}
 	}
 	
-	//ÇÏÀÌ¶óÀÌÆÃ
+	//í•˜ì´ë¼ì´íŒ…
 	function hit($str, $key){
 		$str = str_replace($key, "<span class='hit'>{$key}</span>", $str);
 		return $str;
 	}
 	
-	//°¡±¸ºĞ·ù
-	$furniture_arr = array('Ã¥»ó','ÀÇÀÚ','¿ÊÀå','¼­¶øÀå','Ã¥Àå','Å¹ÀÚ');
+	//ê°€êµ¬ë¶„ë¥˜
+	$furniture_arr = array('ì±…ìƒ','ì˜ì','ì˜·ì¥','ì„œëì¥','ì±…ì¥','íƒì');
 ?>

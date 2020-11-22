@@ -27,16 +27,16 @@ AC_FL_RunContent(
     )
 </script>
 	<div class="quick">
-		<a href="/index.php/page/3/11/"><img src="/img/booking.png" title="Furniture Booking | ¹Ù·Î°¡±â" alt="Furniture Booking | ¹Ù·Î°¡±â" class="borb" /></a>
+		<a href="/index.php/page/3/11/"><img src="/img/booking.png" title="Furniture Booking | ë°”ë¡œê°€ê¸°" alt="Furniture Booking | ë°”ë¡œê°€ê¸°" class="borb" /></a>
         <img src="/img/search.png" alt="Furniture Search" title="Furniture Search" />
         <form action="<?="http://127.0.0.1/index.php/page/2/8/"?>" method="post">
      	<div class="sub_s">
         	<input type="hidden" name="type" value="total" />
-        	<input type="text" size="15" style="height:14px; padding:1px;" title="°Ë»ö¾î" name="key" />
-            <input type="submit" class="btn2" title="°Ë»ö" value="°Ë»ö" value="<?=$_POST['key']?>" />
+        	<input type="text" size="15" style="height:14px; padding:1px;" title="ê²€ìƒ‰ì–´" name="key" />
+            <input type="submit" class="btn2" title="ê²€ìƒ‰" value="ê²€ìƒ‰" value="<?=$_POST['key']?>" />
         </div>
         </form>
-        <img src="/img/search2.png" alt="»çÀÌÆ®¿¡ µî·ÏµÈ °¡±¸µéÀ» °Ë»öÇÕ´Ï´Ù." title="»çÀÌÆ®¿¡ µî·ÏµÈ °¡±¸µéÀ» °Ë»öÇÕ´Ï´Ù." class="img2" />
+        <img src="/img/search2.png" alt="ì‚¬ì´íŠ¸ì— ë“±ë¡ëœ ê°€êµ¬ë“¤ì„ ê²€ìƒ‰í•©ë‹ˆë‹¤." title="ì‚¬ì´íŠ¸ì— ë“±ë¡ëœ ê°€êµ¬ë“¤ì„ ê²€ìƒ‰í•©ë‹ˆë‹¤." class="img2" />
 	</div>
 </div>
 <!-- //sub menu -->
@@ -70,7 +70,7 @@ AC_FL_RunContent(
 <!-- //animation -->
 
 <div class="page_title">
-	<a href="/" title="È¨">È¨</a> &gt;
+	<a href="/" title="í™ˆ">í™ˆ</a> &gt;
 	<a href="<?="/index.php/{$page_type}/{$midx}/{$page['idx']}/"?>" title="<?=$main_title?>"><?=$main_title?></a> &gt;
 	<a href="<?=$get_page?>" title="<?=$sub_title?>" class="bold mint"><?=$sub_title?></a>
 </div>
@@ -89,14 +89,14 @@ AC_FL_RunContent(
 	echo $sub['content'];
 	if($sub['type'] != 'HTML') include_once("{$_SERVER['DOCUMENT_ROOT']}/{$page_type}/{$direct}/{$include_file}.php");
 	if($page_type == 'admin'){
-		access($_SESSION['lv'] == 3, "»çÀÌÆ® °ü¸®ÀÚ¸¸ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+		access($_SESSION['lv'] == 3, "ì‚¬ì´íŠ¸ ê´€ë¦¬ìžë§Œ ì´ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 	}
 ?>
 </div>
 <div id="top_btn">
-	<img src="/img/top_btn.png" title="À§·Î" alt="À§·Î" onclick="link('#'); return false;" />
+	<img src="/img/top_btn.png" title="ìœ„ë¡œ" alt="ìœ„ë¡œ" onclick="link('#'); return false;" />
     <? if($page_type == 'admin'){ ?>
-  	<img src="/img/logout2.png" title="·Î±×¾Æ¿ô" alt="·Î±×¾Æ¿ô" onclick="link('/page/logout.php'); return false;" />
+  	<img src="/img/logout2.png" title="ë¡œê·¸ì•„ì›ƒ" alt="ë¡œê·¸ì•„ì›ƒ" onclick="link('/page/logout.php'); return false;" />
     <? } ?>
 </div>
 <div class="content_bottom"></div>

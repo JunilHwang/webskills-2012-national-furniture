@@ -1,19 +1,19 @@
 <?
-	//юне╛╥Г╣Е
+	//Л²╦М│╢Кё╗К⌠°
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/furniture_ok.php");
 	$board = fetch("select * from board where idx='{$idx}'");
-	access($_SESSION['lv'] == 1, "х╦©Ь╦╦ юл©Кгр ╪Ж юж╫ю╢о╢ы.");
+	access($_SESSION['lv'] == 1, "М ▄Л⌡░К╖▄ Л²╢Л ╘М∙═ Л┬≤ Л·┬Л┼╣К▀┬К▀╓.");
 ?>
-<div class="wh al_l h4" title="╟║╠╦╦╕ ╫ец╩гу╢о╢ы.">╟║╠╦╦╕ ╫ец╩гу╢о╢ы.</div>
+<div class="wh al_l h4" title="Й╟─Й╣╛К╔╪ Л▀═Л╡╜М∙╘К▀┬К▀╓.">Й╟─Й╣╛К╔╪ Л▀═Л╡╜М∙╘К▀┬К▀╓.</div>
 <div class="form">
 <form action="" method="post" onsubmit="return frmChk(this, 'type', 'fname', 'num', 'content', 'file');" enctype="multipart/form-data">
 <div><input type="hidden" name="action" value="hope" /></div>
 	<div class="table">
     	<div class="tr">
-        	<span class="left"><?=$chk?><label for="type" title="╟║╠╦╨п╥Ы">╟║╠╦╨п╥Ы</label></span>
+        	<span class="left"><?=$chk?><label for="type" title="Й╟─Й╣╛К╤└К╔≤">Й╟─Й╣╛К╤└К╔≤</label></span>
             <span>
-            	<select title="╦ч╢╨е╦ют" id="type" name="type">
-                	<option value="">╪╠ец</option>
+            	<select title="К╘■К┴╢М┐─Л·┘" id="type" name="type">
+                	<option value="">Л└═М┐²</option>
                     <?
 					foreach($furniture_arr as $key=>$val){
 					?>
@@ -25,26 +25,26 @@
             </span>
         </div>
     	<div class="tr">
-        	<span class="left"><?=$chk?><label for="fname" title="╟║╠╦╦М">╟║╠╦╦М</label></span>
-            <span><input type="text" title="╟║╠╦╦М" id="fname" name="fname" size="20" /></span>
+        	<span class="left"><?=$chk?><label for="fname" title="Й╟─Й╣╛К╙┘">Й╟─Й╣╛К╙┘</label></span>
+            <span><input type="text" title="Й╟─Й╣╛К╙┘" id="fname" name="fname" size="20" /></span>
         </div>
     	<div class="tr">
-        	<span class="left"><?=$chk?><label for="num" title="╪Ж╥╝">╪Ж╥╝</label></span>
-            <span><input type="text" title="╪Ж╥╝" id="num" name="num" size="5" /></span>
+        	<span class="left"><?=$chk?><label for="num" title="Л┬≤К÷┴">Л┬≤К÷┴</label></span>
+            <span><input type="text" title="Л┬≤К÷┴" id="num" name="num" size="5" /></span>
         </div>
         <div class="tr">
-        	<span class="left cont_left"><?=$chk?><label for="cont" title="Ё╩©К">Ё╩©К</label></span>
-            <span class="cont_right"><textarea title="Ё╩©К" id="cont" name="content" cols="5" rows="9"><?=$board['content']?></textarea></span>
+        	<span class="left cont_left"><?=$chk?><label for="cont" title="К┌╢Л ╘">К┌╢Л ╘</label></span>
+            <span class="cont_right"><textarea title="К┌╢Л ╘" id="cont" name="content" cols="5" rows="9"><?=$board['content']?></textarea></span>
         </div>
         <div class="tr">
-        	<span class="left"><?=$chk?><label for="file" title="╟║╠╦юл╧лаЖ">╟║╠╦юл╧лаЖ</label></span>
-            <span class="right"><input type="file" title="╟║╠╦юл╧лаЖ" id="file" name="file" /></span>
+        	<span class="left"><?=$chk?><label for="file" title="Й╟─Й╣╛Л²╢К╞╦Л╖─">Й╟─Й╣╛Л²╢К╞╦Л╖─</label></span>
+            <span class="right"><input type="file" title="Й╟─Й╣╛Л²╢К╞╦Л╖─" id="file" name="file" /></span>
         </div>
     </div>
 
     <div class="wh al_c">
-        <input type="submit" class="btn" title="юш╪╨©о╥А" value="юш╪╨©о╥А" />
-        <input type="button" class="btn" title="╦Я╥ою╦╥н" value="╦Я╥ою╦╥н" onclick="link('<?=$get_page?>'); return false;" />
+        <input type="submit" class="btn" title="Л·▒Л└╠Л≥└Кё▄" value="Л·▒Л└╠Л≥└Кё▄" />
+        <input type="button" class="btn" title="К╙╘К║²Л°╪К║°" value="К╙╘К║²Л°╪К║°" onclick="link('<?=$get_page?>'); return false;" />
     </div>
 </form>
 </div>

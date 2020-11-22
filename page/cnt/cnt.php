@@ -1,12 +1,12 @@
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/furniture_ok.php");
 	$fur_s = "select * from furniture where now=0";
 	$total = total($fur_s);
 	$fur_r = sql("{$fur_s} order by binary(type) asc, binary(name) asc");
-	access($_SESSION['lv']==2, "°ü¸®ÀÚ¸¸ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.")
+	access($_SESSION['lv']==2, "ê´€ë¦¬ìžë§Œ ì´ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.")
 ?>
-<div class="wh" title="ÃÑ °Ô½Ã¹° : <?=$total?>°³">ÃÑ °Ô½Ã¹° : <?=$total?>°³</div>
+<div class="wh" title="ì´ ê²Œì‹œë¬¼ : <?=$total?>ê°œ">ì´ ê²Œì‹œë¬¼ : <?=$total?>ê°œ</div>
 <div class="form">
 <form action="" method="post" id="frm">
 	<div>
@@ -23,21 +23,21 @@
         	<col width="10%" />
         </colgroup>
     	<tr class="al_c bg2">
-        	<th>ºÐ·ù</th>
-            <th>½ÅÃ»ÀÚ</th>
-        	<th>°¡±¸¸í</th>
-        	<th>¼ö·®</th>
-            <th>µî·Ï</th>
+        	<th>ë¶„ë¥˜</th>
+            <th>ì‹ ì²­ìž</th>
+        	<th>ê°€êµ¬ëª…</th>
+        	<th>ìˆ˜ëŸ‰</th>
+            <th>ë“±ë¡</th>
         </tr>
         <?
-		while($fur = mysql_fetch_assoc($fur_r)){
+		while($fur = $fur_r->fetch()){
 		?>
         <tr class="al_c">
         	<td><?=$fur['type']?></td>
             <td><a href="/page/member_view.php?idx=<?=$fur['idx']?>" title="<?=$fur['name']?>" onclick="window.open(this.href, 'member', 'width=680px, height=400px, top=200px, left=200px'); return false;"><?=$fur['name']?></a></td>
         	<td><?=$fur['fname']?></td>
         	<td><?=$fur['num']?></td>
-            <td><a href="#" title="µî·Ï" onclick="frmSubmit('frm', '<?=$fur['idx']?>', 'pass'); return false;">µî·Ï</a></td>
+            <td><a href="#" title="ë“±ë¡" onclick="frmSubmit('frm', '<?=$fur['idx']?>', 'pass'); return false;">ë“±ë¡</a></td>
         </tr>
         <?
 		}

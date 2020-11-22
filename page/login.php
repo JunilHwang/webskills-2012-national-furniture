@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
 <link rel="stylesheet" href="/common/css/common.css" charset="euc-kr" />
 <script type="text/javascript" src="/common/js/common.js"></script>
-<title>È¸¿ø ·Î±×ÀÎ</title>
+<title>íšŒì› ë¡œê·¸ì¸</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
 	if($_POST['email']){
 		$_POST['pw'] = md5($_POST['pw']);
 		$member = fetch("select * from member where email='{$_POST['email']}'");
-		access($member['email'], "ÀÏÄ¡ÇÏ´Â ÀÌ¸ŞÀÏÀÌ ¾ø½À´Ï´Ù.");
-		access($member['pw'] == $_POST['pw'], "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+		access($member['email'], "ì¼ì¹˜í•˜ëŠ” ì´ë©”ì¼ì´ ì—†ìŠµë‹ˆë‹¤.");
+		access($member['pw'] == $_POST['pw'], "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		$_SESSION['lv'] = $member['lv'];
 		$_SESSION['name'] = $member['name'];
 		$_SESSION['email'] = $member['email'];
@@ -33,8 +33,8 @@
 <div class="login">
 <form action="" method="post" onsubmit="return frmChk(this, 'email', 'pw');">
     <div class="left">
-        <span class="left"><label for="email" title="ÀÌ¸ŞÀÏ ÁÖ¼Ò">ÀÌ¸ŞÀÏ</label><input type="text" title="ÀÌ¸ŞÀÏ ÁÖ¼Ò" id="email" name="email" size="20" /></span>
-        <span class="left"><label for="pw" title="ºñ¹Ğ¹øÈ£">ºñ¹Ğ¹øÈ£</label><input type="password" title="ºñ¹Ğ¹øÈ£" id="pw" name="pw" size="15" /></span>
+        <span class="left"><label for="email" title="ì´ë©”ì¼ ì£¼ì†Œ">ì´ë©”ì¼</label><input type="text" title="ì´ë©”ì¼ ì£¼ì†Œ" id="email" name="email" size="20" /></span>
+        <span class="left"><label for="pw" title="ë¹„ë°€ë²ˆí˜¸">ë¹„ë°€ë²ˆí˜¸</label><input type="password" title="ë¹„ë°€ë²ˆí˜¸" id="pw" name="pw" size="15" /></span>
     </div>
     <div class="right">
     	<input type="submit" class="login_btn" type="login_btn" value="" />

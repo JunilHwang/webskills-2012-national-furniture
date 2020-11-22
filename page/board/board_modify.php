@@ -1,30 +1,30 @@
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/board_ok.php");
 	$board = fetch("select * from board where idx='{$idx}'");
 ?>
-<div class="wh al_l"><?=$chk?>Ç¥½Ã Ç×¸ñÀº ÇÊ¼ö ÀÔ·Â »çÇ×ÀÔ´Ï´Ù.</div>
+<div class="wh al_l"><?=$chk?>í‘œì‹œ í•­ëª©ì€ í•„ìˆ˜ ìž…ë ¥ ì‚¬í•­ìž…ë‹ˆë‹¤.</div>
 <div class="form">
 <form action="" method="post" onsubmit="return frmChk(this, 'id', 'subject', 'content');">
 <div><input type="hidden" name="action" value="update" /></div>
 	<div class="table">
     	<div class="tr">
-        	<span class="left"><?=$chk?><label for="id" title="ÀÛ¼ºÀÚ">ÀÛ¼ºÀÚ</label></span>
-            <span><input type="text" title="ÀÛ¼ºÀÚ" id="id" name="id" size="10" value="<?=$board['id']?>" /></span>
+        	<span class="left"><?=$chk?><label for="id" title="ìž‘ì„±ìž">ìž‘ì„±ìž</label></span>
+            <span><input type="text" title="ìž‘ì„±ìž" id="id" name="id" size="10" value="<?=$board['id']?>" /></span>
         </div>
     	<div class="tr">
-        	<span class="left"><?=$chk?><label for="subject" title="Á¦¸ñ">Á¦¸ñ</label></span>
-            <span><input type="text" title="Á¦¸ñ" id="subject" name="subject" size="50" value="<?=$board['subject']?>" /></span>
+        	<span class="left"><?=$chk?><label for="subject" title="ì œëª©">ì œëª©</label></span>
+            <span><input type="text" title="ì œëª©" id="subject" name="subject" size="50" value="<?=$board['subject']?>" /></span>
         </div>
         <div class="tr">
-        	<span class="left cont_left"><?=$chk?><label for="cont" title="³»¿ë">³»¿ë</label></span>
-            <span class="cont_right"><textarea title="³»¿ë" id="cont" name="content" cols="5" rows="9"><?=$board['content']?></textarea></span>
+        	<span class="left cont_left"><?=$chk?><label for="cont" title="ë‚´ìš©">ë‚´ìš©</label></span>
+            <span class="cont_right"><textarea title="ë‚´ìš©" id="cont" name="content" cols="5" rows="9"><?=$board['content']?></textarea></span>
         </div>
     </div>
 
     <div class="wh al_c">
-        <input type="submit" class="btn" title="¼öÁ¤¿Ï·á" value="¼öÁ¤¿Ï·á" />
-        <input type="button" class="btn" title="¸ñ·ÏÀ¸·Î" value="¸ñ·ÏÀ¸·Î" onclick="link('<?=$get_page?>'); return false;" />
+        <input type="submit" class="btn" title="ìˆ˜ì •ì™„ë£Œ" value="ìˆ˜ì •ì™„ë£Œ" />
+        <input type="button" class="btn" title="ëª©ë¡ìœ¼ë¡œ" value="ëª©ë¡ìœ¼ë¡œ" onclick="link('<?=$get_page?>'); return false;" />
     </div>
 </form>
 </div>

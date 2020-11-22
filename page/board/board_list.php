@@ -2,10 +2,10 @@
 	$board_s = "select * from board where sidx = '{$sidx}'";
 	$total = total($board_s);
 	$start = 5 * ($page_num - 1);
-	$page_nate = page_nate($page_num, $total, "{$get_page}list/&&/", "ÀÌÀüÆäÀÌÁö", "´ÙÀ½ÆäÀÌÁö");
+	$page_nate = page_nate($page_num, $total, "{$get_page}list/&&/", "ì´ì „íŽ˜ì´ì§€", "ë‹¤ìŒíŽ˜ì´ì§€");
 	$board_r = sql("{$board_s} order by idx desc limit $start, 5");
 ?>
-<div class="wh" title="¿¹¾à ´ë±â °¡±¸ : <?=$total?>°³">¿¹¾à ´ë±â °¡±¸ : <?=$total?>°³</div>
+<div class="wh" title="ì˜ˆì•½ ëŒ€ê¸° ê°€êµ¬ : <?=$total?>ê°œ">ì˜ˆì•½ ëŒ€ê¸° ê°€êµ¬ : <?=$total?>ê°œ</div>
 <div class="form">
 	<table width="100%">
     	<colgroup>
@@ -15,13 +15,13 @@
         	<col width="15%" />
         </colgroup>
     	<tr class="al_c bg2">
-        	<th>±Û¹øÈ£</th>
-        	<th>Á¦¸ñ</th>
-        	<th>ÀÛ¼ºÀÚ</th>
-        	<th>ÀÛ¼ºÀÏ</th>
+        	<th>ê¸€ë²ˆí˜¸</th>
+        	<th>ì œëª©</th>
+        	<th>ìž‘ì„±ìž</th>
+        	<th>ìž‘ì„±ì¼</th>
         </tr>
         <?
-		while($board = mysql_fetch_assoc($board_r)){
+		while($board = $board_r->fetch()){
 		?>
         <tr class="al_c">
         	<td><?=$board['idx']?></td>
@@ -35,6 +35,6 @@
     </table>
     <? if($total != 0) echo $page_nate; ?>
     <div class="al_r">
-    	<input type="button" class="btn" title="±ÛÀÛ¼º" value="±ÛÀÛ¼º" onclick="link('<?=$get_page?>add/'); return false;" />
+    	<input type="button" class="btn" title="ê¸€ìž‘ì„±" value="ê¸€ìž‘ì„±" onclick="link('<?=$get_page?>add/'); return false;" />
     </div>
 </div>

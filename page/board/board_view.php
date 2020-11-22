@@ -1,17 +1,17 @@
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/board_ok.php");
 	$board = fetch("select * from board where idx='{$idx}'");
 ?>
-<div class="wh al_l h4" title="°Ô½Ã±ÛÀ» Á¶È¸ÇÕ´Ï´Ù.">°Ô½Ã±ÛÀ» Á¶È¸ÇÕ´Ï´Ù.</div>
+<div class="wh al_l h4" title="ê²Œì‹œê¸€ì„ ì¡°íšŒí•©ë‹ˆë‹¤.">ê²Œì‹œê¸€ì„ ì¡°íšŒí•©ë‹ˆë‹¤.</div>
 <div class="form">
 	<div class="table">
     	<div class="tr">
-        	<span class="left"><?=$chk?>ÀÛ¼ºÀÚ</span>
+        	<span class="left"><?=$chk?>ìž‘ì„±ìž</span>
             <span class="right"><?=$board['id']?></span>
         </div>
     	<div class="tr">
-        	<span class="left"><?=$chk?>Á¦¸ñ</span>
+        	<span class="left"><?=$chk?>ì œëª©</span>
             <span class="right"><?=$board['subject']?></span>
         </div>
         <div class="tr">
@@ -20,24 +20,24 @@
     	<div class="tr">
         	<?
 				$b = fetch("select * from board where idx>$idx limit 1");
-				$next = "´ÙÀ½±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+				$next = "ë‹¤ìŒê¸€ì´ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 				if($b['idx']) $next = "<a href='{$get_page}view/{$b['idx']}/' title='{$b['subject']}'>{$b['subject']}</a>";
 				
 				$b = fetch("select * from board where idx<$idx order by idx desc limit 1");
-				$prev = "ÀÌÀü±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+				$prev = "ì´ì „ê¸€ì´ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 				if($b['idx']) $prev = "<a href='{$get_page}view/{$b['idx']}/' title='{$b['subject']}'>{$b['subject']}</a>";
 			?>
-        	<span class="left">´ÙÀ½±Û</span>
+        	<span class="left">ë‹¤ìŒê¸€</span>
             <span class="right"><?=$next?></span>
         </div>
     	<div class="tr">
-        	<span class="left">ÀÌÀü±Û</span>
+        	<span class="left">ì´ì „ê¸€</span>
             <span class="right"><?=$prev?></span>
         </div>
     </div>
 	<div class="wh al_c">
-        <input type="button" class="btn" title="¼öÁ¤ÇÏ±â" value="¼öÁ¤ÇÏ±â" onclick="link('<?="{$get_page}modify/{$idx}/"?>'); return false;" />
-        <input type="button" class="btn" title="»èÁ¦ÇÏ±â" value="»èÁ¦ÇÏ±â" onclick="if(confirm('Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?')) link('<?="{$get_page}delete/{$idx}/"?>'); return false;" />
-        <input type="button" class="btn" title="¸ñ·ÏÀ¸·Î" value="¸ñ·ÏÀ¸·Î" onclick="link('<?=$get_page?>'); return false;" />
+        <input type="button" class="btn" title="ìˆ˜ì •í•˜ê¸°" value="ìˆ˜ì •í•˜ê¸°" onclick="link('<?="{$get_page}modify/{$idx}/"?>'); return false;" />
+        <input type="button" class="btn" title="ì‚­ì œí•˜ê¸°" value="ì‚­ì œí•˜ê¸°" onclick="if(confirm('ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?')) link('<?="{$get_page}delete/{$idx}/"?>'); return false;" />
+        <input type="button" class="btn" title="ëª©ë¡ìœ¼ë¡œ" value="ëª©ë¡ìœ¼ë¡œ" onclick="link('<?=$get_page?>'); return false;" />
     </div>
 </div>

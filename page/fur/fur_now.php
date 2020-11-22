@@ -1,8 +1,8 @@
 <div class="wh mb15">
-	<input type="button" class="btn3" title="´ë¿©¿¹¾àÆäÀÌÁö" value="´ë¿©¿¹¾àÆäÀÌÁö" onclick="link('<?="{$get_page}"?>'); return false;" />
+	<input type="button" class="btn3" title="ëŒ€ì—¬ì˜ˆì•½íŽ˜ì´ì§€" value="ëŒ€ì—¬ì˜ˆì•½íŽ˜ì´ì§€" onclick="link('<?="{$get_page}"?>'); return false;" />
 </div>
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/reser_ok.php");
 	
 	if($_SESSION['email']){
@@ -15,14 +15,14 @@
 <div class="number_input">
 <form action="" method="post" onsubmit="return frmChk(this, 'number');">
 	<div class="wh al_c">
-    	<label for="number" class="h4" title="ÁÖ¹®¹øÈ£">ÁÖ¹®¹øÈ£</label>
-        <input type="text" title="ÁÖ¹®¹øÈ£" id="number" name="number" size="15" />
-        <input type="submit" class="btn" title="È®ÀÎÇÏ±â" value="È®ÀÎÇÏ±â" />
+    	<label for="number" class="h4" title="ì£¼ë¬¸ë²ˆí˜¸">ì£¼ë¬¸ë²ˆí˜¸</label>
+        <input type="text" title="ì£¼ë¬¸ë²ˆí˜¸" id="number" name="number" size="15" />
+        <input type="submit" class="btn" title="í™•ì¸í•˜ê¸°" value="í™•ì¸í•˜ê¸°" />
     </div>
 </form>
 </div>
 <? } else {?>
-<div class="wh h4" title="´ë¿©¿¹¾àÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.">´ë¿©¿¹¾àÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.</div>
+<div class="wh h4" title="ëŒ€ì—¬ì˜ˆì•½ì¤‘ì¸ ê°€êµ¬ëª©ë¡ìž…ë‹ˆë‹¤.">ëŒ€ì—¬ì˜ˆì•½ì¤‘ì¸ ê°€êµ¬ëª©ë¡ìž…ë‹ˆë‹¤.</div>
 <div class="form">
 <form action="" method="post" id="frm">
 	<div>
@@ -39,24 +39,24 @@
 			<col width="20%" />
 		</colgroup>
 		<tr class="al_c bg2">
-			<th>°¡±¸¸í</th>
-			<th>´ë¿©¼ö·®</th>
-            <th>½ÅÃ»ÀÏ</th>            
-			<th>¼öÁ¤</th>
-			<th>»èÁ¦</th>
+			<th>ê°€êµ¬ëª…</th>
+			<th>ëŒ€ì—¬ìˆ˜ëŸ‰</th>
+            <th>ì‹ ì²­ì¼</th>            
+			<th>ìˆ˜ì •</th>
+			<th>ì‚­ì œ</th>
 		</tr>
 		<?
 		$fur_r = sql("{$fur_s} and now=1");
-		while($fur = mysql_fetch_assoc($fur_r)){
+		while($fur = $fur_r->fetch()){
 			$fur['date'] = explode("-", $fur['date']);
 			$fur['date'] = implode("", $fur['date']);
 		?>
 		<tr class="al_c">
 			<td><?=$fur['fname']?></td>
-			<td><?=$fur['re']?>°³</td>
+			<td><?=$fur['re']?>ê°œ</td>
 			<td><?=$fur['date']?></td>
-			<td><a href="<?="{$get_page}modify/{$fur['idx']}/"?>" title="¼öÁ¤">¼öÁ¤</a></td>
-			<td><a href="#" title="»èÁ¦" onclick="frmSubmit('frm', '<?=$fur['idx']?>'); return false;">»èÁ¦</a></td>
+			<td><a href="<?="{$get_page}modify/{$fur['idx']}/"?>" title="ìˆ˜ì •">ìˆ˜ì •</a></td>
+			<td><a href="#" title="ì‚­ì œ" onclick="frmSubmit('frm', '<?=$fur['idx']?>'); return false;">ì‚­ì œ</a></td>
 		</tr>
 		<?
 		}
@@ -64,7 +64,7 @@
 	</table>
 </div>
 
-<div class="wh h4" title="´ë¿©ÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.">´ë¿©ÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.</div>
+<div class="wh h4" title="ëŒ€ì—¬ì¤‘ì¸ ê°€êµ¬ëª©ë¡ìž…ë‹ˆë‹¤.">ëŒ€ì—¬ì¤‘ì¸ ê°€êµ¬ëª©ë¡ìž…ë‹ˆë‹¤.</div>
 <div class="form">
 <form action="" method="post" id="frm2">
 	<div>
@@ -81,22 +81,22 @@
 			<col width="20%" />
 		</colgroup>
 		<tr class="al_c bg2">
-			<th>°¡±¸¸í</th>
-			<th>´ë¿©¼ö·®</th>
-			<th>½ÅÃ»ÀÏ</th>
-			<th>»óÅÂ</th>
-            <th>¹Ý³³</th>
+			<th>ê°€êµ¬ëª…</th>
+			<th>ëŒ€ì—¬ìˆ˜ëŸ‰</th>
+			<th>ì‹ ì²­ì¼</th>
+			<th>ìƒíƒœ</th>
+            <th>ë°˜ë‚©</th>
 		</tr>
 		<?
 		$fur_r = sql("{$fur_s} and (now=2 or now=3)");
-		while($fur = mysql_fetch_assoc($fur_r)){
-			$now = $fur['now'] == 2 ? "´ë¿©Áß" : "¹Ý³³´ë±âÁß";
-			$return = "<a href='#' onclick=\"frmSubmit('frm2', '{$fur['idx']}', 'pass'); return false;\" title='¹Ý³³'>¹Ý³³</a>";
+		while($fur = $fur_r->fetch()){
+			$now = $fur['now'] == 2 ? "ëŒ€ì—¬ì¤‘" : "ë°˜ë‚©ëŒ€ê¸°ì¤‘";
+			$return = "<a href='#' onclick=\"frmSubmit('frm2', '{$fur['idx']}', 'pass'); return false;\" title='ë°˜ë‚©'>ë°˜ë‚©</a>";
 			if($fur['now'] == 3) $return = "-";
 		?>
 		<tr class="al_c">
 			<td><?=$fur['fname']?></td>
-			<td><?=$fur['re']?>°³</td>
+			<td><?=$fur['re']?>ê°œ</td>
 			<td><?=$fur['date']?></td>
             <td><?=$now?></td>
 			<td><?=$return?></td>

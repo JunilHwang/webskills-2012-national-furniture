@@ -1,34 +1,34 @@
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/furniture_ok.php");
 	$fur = fetch("select * from furniture where idx='{$idx}'");
-	$num = "{$fur['num']}°³";
-	if($fur['num'] == 0) $num = "Ç°ÀýµÇ¾ú½À´Ï´Ù.";
+	$num = "{$fur['num']}ê°œ";
+	if($fur['num'] == 0) $num = "í’ˆì ˆë˜ì—ˆìŠµë‹ˆë‹¤.";
 ?>
-<div class="wh al_l h4" title="°¡±¸Á¤º¸¸¦ Á¶È¸ÇÕ´Ï´Ù.">°¡±¸Á¤º¸¸¦ Á¶È¸ÇÕ´Ï´Ù.</div>
+<div class="wh al_l h4" title="ê°€êµ¬ì •ë³´ë¥¼ ì¡°íšŒí•©ë‹ˆë‹¤.">ê°€êµ¬ì •ë³´ë¥¼ ì¡°íšŒí•©ë‹ˆë‹¤.</div>
 <div class="form">
 	<div class="table">
     	<div class="tr">
-        	<span class="left">°¡±¸ºÐ·ù</span>
+        	<span class="left">ê°€êµ¬ë¶„ë¥˜</span>
             <span class="right"><?=$fur['type']?></span>
         </div>
     	<div class="tr">
-        	<span class="left">°¡±¸¸í</span>
+        	<span class="left">ê°€êµ¬ëª…</span>
             <span class="right"><?=$fur['fname']?></span>
         </div>
         <div class="tr">
-        	<span class="left">¼ö·®</span>
+        	<span class="left">ìˆ˜ëŸ‰</span>
             <span class="right"><?=$num?></span>
         </div>
         <div class="tr">
-        	<span class="left cont_left">°¡±¸¼³¸í</span>
+        	<span class="left cont_left">ê°€êµ¬ì„¤ëª…</span>
             <span class="right cont_right"><?=$fur['content']?></span>
         </div>
     </div>
 	<div class="wh al_c">
     	<? if($fur['num'] != 0){ ?>
-        <input type="button" class="btn" title="´ë¿©¿¹¾à" value="´ë¿©¿¹¾à" onclick="link('<?="{$get_page}re/{$idx}/"?>'); return false;" />
+        <input type="button" class="btn" title="ëŒ€ì—¬ì˜ˆì•½" value="ëŒ€ì—¬ì˜ˆì•½" onclick="link('<?="{$get_page}re/{$idx}/"?>'); return false;" />
         <? } ?>
-        <input type="button" class="btn" title="¸ñ·ÏÀ¸·Î" value="¸ñ·ÏÀ¸·Î" onclick="link('<?=$get_page?>'); return false;" />
+        <input type="button" class="btn" title="ëª©ë¡ìœ¼ë¡œ" value="ëª©ë¡ìœ¼ë¡œ" onclick="link('<?=$get_page?>'); return false;" />
     </div>
 </div>

@@ -1,10 +1,10 @@
 <?
-	//ÀÎÅ¬·çµå
+	//ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/reser_ok.php");
 	$fur_s = "select * from reser";
-	access($_SESSION['lv'] == 2, "°ü¸®ÀÚ¸¸ ÀÌ¿ëÇÒ¼ö ÀÖ½À´Ï´Ù.");
+	access($_SESSION['lv'] == 2, "ê´€ë¦¬ìë§Œ ì´ìš©í• ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 ?>
-<div class="wh h4" title="´ë¿©¿¹¾àÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.">´ë¿©¿¹¾àÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.</div>
+<div class="wh h4" title="ëŒ€ì—¬ì˜ˆì•½ì¤‘ì¸ ê°€êµ¬ëª©ë¡ì…ë‹ˆë‹¤.">ëŒ€ì—¬ì˜ˆì•½ì¤‘ì¸ ê°€êµ¬ëª©ë¡ì…ë‹ˆë‹¤.</div>
 <div class="form">
 <form action="" method="post" id="frm">
 	<div>
@@ -21,15 +21,15 @@
 			<col width="20%" />
 		</colgroup>
 		<tr class="al_c bg2">
-        	<th>½ÅÃ»ÀÚ(¿¹¾à¹øÈ£)</th>
-			<th>°¡±¸¸í</th>
-			<th>´ë¿©¼ö·®</th>
-            <th>½ÅÃ»ÀÏ</th>       
-			<th>´ë¿©Çã°¡</th>
+        	<th>ì‹ ì²­ì(ì˜ˆì•½ë²ˆí˜¸)</th>
+			<th>ê°€êµ¬ëª…</th>
+			<th>ëŒ€ì—¬ìˆ˜ëŸ‰</th>
+            <th>ì‹ ì²­ì¼</th>       
+			<th>ëŒ€ì—¬í—ˆê°€</th>
 		</tr>
 		<?
 		$fur_r = sql("{$fur_s} where now=1");
-		while($fur = mysql_fetch_assoc($fur_r)){
+		while($fur = $fur_r->fetch()){
 			$rname = $fur['name'];
 			if($fur['number']) $rname = $fur['number'];
 			$fur['date'] = explode("-", $fur['date']);
@@ -38,9 +38,9 @@
 		<tr class="al_c">
 			<td><?=$rname?></td>
 			<td><?=$fur['fname']?></td>
-			<td><?=$fur['re']?>°³</td>
+			<td><?=$fur['re']?>ê°œ</td>
 			<td><?=$fur['date']?></td>
-			<td><a href="#" title="Çã°¡" onclick="frmSubmit('frm', '<?=$fur['idx']?>', 'pass'); return false;">Çã°¡</a></td>
+			<td><a href="#" title="í—ˆê°€" onclick="frmSubmit('frm', '<?=$fur['idx']?>', 'pass'); return false;">í—ˆê°€</a></td>
 		</tr>
 		<?
 		}
@@ -48,7 +48,7 @@
 	</table>
 </div>
 
-<div class="wh h4" title="´ë¿©ÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.">´ë¿©ÁßÀÎ °¡±¸¸ñ·ÏÀÔ´Ï´Ù.</div>
+<div class="wh h4" title="ëŒ€ì—¬ì¤‘ì¸ ê°€êµ¬ëª©ë¡ì…ë‹ˆë‹¤.">ëŒ€ì—¬ì¤‘ì¸ ê°€êµ¬ëª©ë¡ì…ë‹ˆë‹¤.</div>
 <div class="form">
 <form action="" method="post" id="frm2">
 	<div>
@@ -66,29 +66,29 @@
 			<col width="10%" />
 		</colgroup>
 		<tr class="al_c bg2">
-        	<th>´ë¿©ÀÚ(¿¹¾à¹øÈ£)</th>
-			<th>°¡±¸¸í</th>
-			<th>´ë¿©¼ö·®</th>
-            <th>»óÅÂ</th>
-			<th>¹İ³³Çã°¡</th>
+        	<th>ëŒ€ì—¬ì(ì˜ˆì•½ë²ˆí˜¸)</th>
+			<th>ê°€êµ¬ëª…</th>
+			<th>ëŒ€ì—¬ìˆ˜ëŸ‰</th>
+            <th>ìƒíƒœ</th>
+			<th>ë°˜ë‚©í—ˆê°€</th>
 			<th>zip</th>
 		</tr>
 		<?
 		$fur_r = sql("{$fur_s} where now=2 or now=3");
-		while($fur = mysql_fetch_assoc($fur_r)){
+		while($fur = $fur_r->fetch()){
 			$rname = $fur['name'];
 			if($fur['number']) $rname = $fur['number'];
-			$return = "´ë¿©Áß";
+			$return = "ëŒ€ì—¬ì¤‘";
 			$now = "-";
 			if($fur['now'] == 3){
-				$return = "¹İ³³´ë±âÁß";
-				$now = "<a href='#' onclick=\"frmSubmit('frm2', '{$fur['idx']}', 'pass'); return false;\" title='Çã°¡'>Çã°¡</a>";
+				$return = "ë°˜ë‚©ëŒ€ê¸°ì¤‘";
+				$now = "<a href='#' onclick=\"frmSubmit('frm2', '{$fur['idx']}', 'pass'); return false;\" title='í—ˆê°€'>í—ˆê°€</a>";
 			}
 		?>
 		<tr class="al_c">
 			<td><?=$rname?></td>
 			<td><?=$fur['fname']?></td>
-			<td><?=$fur['re']?>°³</td>
+			<td><?=$fur['re']?>ê°œ</td>
 			<td><?=$return?></td>
 			<td><?=$now?></td>
             <td><a href="/data/zip/<?=$fur['zip']?>" title="zip">zip</a></td>

@@ -11,7 +11,7 @@
         $total = total($fur_s);
         $start = 12 * ($page_num - 1);
         $page_nate = page_nate($page_num, $total, "{$get_page}list/&&/", "이전페이지", "다음페이지", 12);
-        $fur_r = sql("{$fur_s} order by binary(type) asc, binary(fname) asc limit $start, 12");
+        $fur_r = sql("{$fur_s} order by type asc, fname asc limit $start, 12");
     ?>
     <div class="wh" title="총 게시물 : <?=$total?>개">총 게시물 : <?=$total?>개</div>
     <div class="form">

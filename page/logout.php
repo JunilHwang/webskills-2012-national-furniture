@@ -1,9 +1,9 @@
 <?
-	//¼¼¼ÇÆÄ±«
+	//ì„¸ì…˜íŒŒê´´
 	session_start();
 	session_destroy();
 	
-	//ÆäÀÌÁö ÀÌµ¿
+	//íŽ˜ì´ì§€ ì´ë™
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/lib.php");
 	move("/");
 ?>

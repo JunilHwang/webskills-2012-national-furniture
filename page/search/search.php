@@ -1,38 +1,38 @@
 <?
-	//ÁÖ¼Ò°ª ÀúÀå
+	//ì£¼ì†Œê°’ ì €ì¥
 	$search_type = isset($get[4]) ? $get[4] : NULL;
 	$search_key = isset($get[5]) ? decode($get[5]) : NULL;
 	$page_num  = $get[6] ? $get[6] : 1;
 	$page_num2 = $get[7] ? $get[7] : 1;
 	
-	//ÆäÀÌÁö ÀÌµ¿
+	//í˜ì´ì§€ ì´ë™
 	if(isset($_POST['type']) && isset($_POST['key'])) move("{$get_page}{$_POST['type']}/".encode($_POST['key'])."/");
 	if(isset($search_type) && isset($search_key)){
-		//°Ë»ö Å¸ÀÔ
+		//ê²€ìƒ‰ íƒ€ì…
 		$sel[$search_type] = 'selected="selected"';
 		
-		//Äõ¸® ÀúÀå
+		//ì¿¼ë¦¬ ì €ì¥
 		$fur_s = "select * from furniture where now=1 and (instr(type, binary('{$search_key}')) or instr(fname, binary('{$search_key}')) or instr(num, binary('{$search_key}')) or instr(content, binary('{$search_key}')))";
 		$re_s = "select * from reser where now=2 and (instr(fname, binary('{$search_key}')) or instr(date, binary('{$search_key}')) or instr(name, binary('{$search_key}')))";
 		
-		//°¹¼öÀúÀå
+		//ê°¯ìˆ˜ì €ì¥
 		$search_cnt = $fur_cnt = $re_cnt = 0;
 		if($search_key != ''){
 			$cnt_r = sql($fur_s);
-			while($cnt = mysql_fetch_assoc($cnt_r)){
+			while($cnt = $cnt_r->fetch()){
 				$fur_cnt += substr_count($cnt['type'], $search_key);
 				$fur_cnt += substr_count($cnt['fname'], $search_key);
 				$fur_cnt += substr_count($cnt['num'], $search_key);
 				$fur_cnt += substr_count($cnt['content'], $search_key);
 			}
 			$cnt_r = sql($re_s);
-			while($cnt = mysql_fetch_assoc($cnt_r)){
+			while($cnt = $cnt_r->fetch()){
 				$re_cnt += substr_count($cnt['fname'], $search_key);
 			}
 			$search_cnt = $fur_cnt + $re_cnt;
 		}
 		
-		//ÆäÀÌÂ¡
+		//í˜ì´ì§•
 		$total1 = total($fur_s);
 		$total2 = total($re_s);
 		$page_nate1 = page_nate($page_num, $total1, "{$get_page}{$search_type}/".encode($search_key)."/&&/", "previous", "next");
@@ -40,7 +40,7 @@
 		$start1 = 5 * ($page_num - 1);
 		$start2 = 5 * ($page_num2 - 1);
 		
-		//°Ë»öÄõ¸®
+		//ê²€ìƒ‰ì¿¼ë¦¬
 		$fur_r = sql("{$fur_s} order by binary(type) asc, binary(fname) asc limit $start1, 5");
 		$re_r = sql("{$re_s} order by binary(fname) asc, binary(re) asc limit $start2, 5");
 	}
@@ -48,25 +48,25 @@
 <div class="search mb15">
 <form action="" method="post">
     <div>
-    <select name="type" title="¸Ş´ºÅ¸ÀÔ">
-    	<option value="total" <?=$sel['total']?>>ÀüÃ¼</option>
-    	<option value="furniture" <?=$sel['furniture']?>>µî·ÏµÈ °¡±¸</option>
-    	<option value="reser" <?=$sel['reser']?>>´ë¿©½ÂÀÎµÈ °¡±¸</option>
+    <select name="type" title="ë©”ë‰´íƒ€ì…">
+    	<option value="total" <?=$sel['total']?>>ì „ì²´</option>
+    	<option value="furniture" <?=$sel['furniture']?>>ë“±ë¡ëœ ê°€êµ¬</option>
+    	<option value="reser" <?=$sel['reser']?>>ëŒ€ì—¬ìŠ¹ì¸ëœ ê°€êµ¬</option>
     </select>
-    <input type="text" title="ÅëÇÕ°Ë»ö" name="key" id="key" size="40" value="<?=$search_key?>" />
-    <input type="submit" class="btn" title="°Ë»öÇÏ±â" value="°Ë»öÇÏ±â" />
+    <input type="text" title="í†µí•©ê²€ìƒ‰" name="key" id="key" size="40" value="<?=$search_key?>" />
+    <input type="submit" class="btn" title="ê²€ìƒ‰í•˜ê¸°" value="ê²€ìƒ‰í•˜ê¸°" />
 	</div>
 </form>
 </div>
 <?
-//°Ë»ö »óÅÂ
+//ê²€ìƒ‰ ìƒíƒœ
 if(isset($search_type) && isset($search_key)){
 ?>
-<div class="wh h4 al_r" title="Å°¿öµå °Ë»ö °á°ú : <?=$search_cnt?>°³">Å°¿öµå °Ë»ö °á°ú : <?=$search_cnt?>°³</div>
+<div class="wh h4 al_r" title="í‚¤ì›Œë“œ ê²€ìƒ‰ ê²°ê³¼ : <?=$search_cnt?>ê°œ">í‚¤ì›Œë“œ ê²€ìƒ‰ ê²°ê³¼ : <?=$search_cnt?>ê°œ</div>
 <?
 	if($search_type == 'furniture' || $search_type == 'total'){
 ?>
-<div class="wh mt15" title="µî·ÏµÈ °¡±¸ °Ë»ö °á°ú : <?=$total1?>°³">µî·ÏµÈ °¡±¸ °Ë»ö °á°ú : <?=$total1?>°³</div>
+<div class="wh mt15" title="ë“±ë¡ëœ ê°€êµ¬ ê²€ìƒ‰ ê²°ê³¼ : <?=$total1?>ê°œ">ë“±ë¡ëœ ê°€êµ¬ ê²€ìƒ‰ ê²°ê³¼ : <?=$total1?>ê°œ</div>
 <div class="form">
 	<table width="100%">
     	<colgroup>
@@ -78,15 +78,15 @@ if(isset($search_type) && isset($search_key)){
         	<col width="10%" />
         </colgroup>
     	<tr class="al_c bg2">
-        	<th>°¡±¸ÀÌ¹ÌÁö</th>
-        	<th>ºĞ·ù</th>
-            <th>°¡±¸¸í</th>
-        	<th>Á¦°í</th>
-        	<th>°¡±¸¼³¸í</th>
-        	<th>Å°¿öµå</th>
+        	<th>ê°€êµ¬ì´ë¯¸ì§€</th>
+        	<th>ë¶„ë¥˜</th>
+            <th>ê°€êµ¬ëª…</th>
+        	<th>ì œê³ </th>
+        	<th>ê°€êµ¬ì„¤ëª…</th>
+        	<th>í‚¤ì›Œë“œ</th>
         </tr>
         <?
-		while($fur = mysql_fetch_assoc($fur_r)){
+		while($fur = $fur_r->fetch()){
 			$cnt = 0;
 			if($search_key != ''){
 				$cnt += substr_count($fur['type'], $search_key);
@@ -102,7 +102,7 @@ if(isset($search_type) && isset($search_key)){
         	<td><a href="<?="/index.php/page/3/11/view/{$fur['idx']}/"?>" onclick="window.open(this.href); return false;" title="<?=$fur['fname']?>"><?=$se['fname']?></a></td>
         	<td><?=$se['num']?></td>
         	<td><?=$se['content']?></td>
-        	<td><?=$cnt?>°³</td>
+        	<td><?=$cnt?>ê°œ</td>
         </tr>
         <?
 		}
@@ -115,7 +115,7 @@ if(isset($search_type) && isset($search_key)){
 	
 	if($search_type == 'reser' || $search_type == 'total'){
 ?>
-<div class="wh mt30" title="´ë¿©°¡ ½ÂÀÎµÈ °¡±¸ °Ë»ö °á°ú : <?=$total2?>°³">´ë¿©°¡ ½ÂÀÎµÈ °¡±¸ °Ë»ö °á°ú : <?=$total2?>°³</div>
+<div class="wh mt30" title="ëŒ€ì—¬ê°€ ìŠ¹ì¸ëœ ê°€êµ¬ ê²€ìƒ‰ ê²°ê³¼ : <?=$total2?>ê°œ">ëŒ€ì—¬ê°€ ìŠ¹ì¸ëœ ê°€êµ¬ ê²€ìƒ‰ ê²°ê³¼ : <?=$total2?>ê°œ</div>
 <div class="form">
 	<table width="100%">
     	<colgroup>
@@ -126,14 +126,14 @@ if(isset($search_type) && isset($search_key)){
         	<col width="20%" />
         </colgroup>
     	<tr class="al_c bg2">
-        	<th>°¡±¸¸í</th>
-            <th>Á¦°í</th>
-        	<th>´ë¿©ÀÚ</th>
-        	<th>½ÅÃ»ÀÏ</th>
-        	<th>Å°¿öµå</th>
+        	<th>ê°€êµ¬ëª…</th>
+            <th>ì œê³ </th>
+        	<th>ëŒ€ì—¬ì</th>
+        	<th>ì‹ ì²­ì¼</th>
+        	<th>í‚¤ì›Œë“œ</th>
         </tr>
         <?
-		while($re = mysql_fetch_assoc($re_r)){
+		while($re = $re_r->fetch()){
 			$cnt = 0;
 			if($search_key != ''){
 				$cnt += substr_count($re['fname'], $search_key);
@@ -149,7 +149,7 @@ if(isset($search_type) && isset($search_key)){
         	<td><?=$num['num']?></td>
         	<td><a href="/page/member_view.php?email=<?=$m_email?>" title="<?=$re['email']?>" onclick="window.open(this.href, 'member', 'width=680px, height=400px, top=200px, left=200px'); return false;"><?=$se['name']?></a></td>
         	<td><?=$se['date']?></td>
-        	<td><?=$cnt?>°³</td>
+        	<td><?=$cnt?>ê°œ</td>
         </tr>
         <?
 		}

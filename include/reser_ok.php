@@ -1,78 +1,78 @@
 <?
 	if($_POST['action']){		
     	switch($_POST['action']){
-			//°¡±¸¿¹¾à
+			//ê°€êµ¬ì˜ˆì•½
 			case 'insert':
 				$_POST['date'] = implode("-", $_POST['date']);
 				$now = strtotime(date("Y-m-d"));
 				$re_date = strtotime(date("{$_POST['date']}"));
-				access($re_date >= $now, "Áö³­ ³¯Â¥¿¡´Â ¿¹¾àÇÒ ¼ö ¾ø½À´Ï´Ù.");
+				access($re_date >= $now, "ì§€ë‚œ ë‚ ì§œì—ëŠ” ì˜ˆì•½í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				if($_SESSION['lv']){
-					$msg = "¿¹¾àµÇ¾ú½À´Ï´Ù.";
+					$msg = "ì˜ˆì•½ë˜ì—ˆìŠµë‹ˆë‹¤.";
 					include_once("{$_SERVER['DOCUMENT_ROOT']}/include/zip.php");
 				} else {
 					$number = str_pad(rand(0, 99999),5,0,0);
 					$add_sql .= ", number='{$number}'";
 					$cancel .= "name/email/";
-					$msg = "¿¹¾à¹øÈ£´Â [{$number}] ÀÔ´Ï´Ù.";
+					$msg = "ì˜ˆì•½ë²ˆí˜¸ëŠ” [{$number}] ì…ë‹ˆë‹¤.";
 				}
 				$add_sql .= ", now=1";
 				sql("update furniture set num=num-{$_POST['re']} where idx='{$_POST['fidx']}'");
 				$url = $get_page;
 			break;
 			
-			//¿¹¾àÃë¼Ò
+			//ì˜ˆì•½ì·¨ì†Œ
 			case 'delete' :
 				$add_sql .= " idx = '{$_POST['idx']}'";
-				$msg = "¿¹¾àÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.";
+				$msg = "ì˜ˆì•½ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = "{$get_page}now/";
 			break;
 			
-			//¿¹¾à¼öÁ¤
+			//ì˜ˆì•½ìˆ˜ì •
 			case 'modify' :
 				$_POST['action'] = 'update';
 				$_POST['date'] = implode("-", $_POST['date']);
 				$now = strtotime(date("Y-m-d"));
 				$re_date = strtotime(date("{$_POST['date']}"));
-				access($re_date >= $now, "Áö³­ ³¯Â¥¿¡´Â ¿¹¾àÇÒ ¼ö ¾ø½À´Ï´Ù.");
+				access($re_date >= $now, "ì§€ë‚œ ë‚ ì§œì—ëŠ” ì˜ˆì•½í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				$add_sql .= " where idx='{$idx}'";
-				$msg = "¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+				$msg = "ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = "{$get_page}now/";
 			break;
 			
-			//¿¹¾àÇã°¡
+			//ì˜ˆì•½í—ˆê°€
 			case 'lend' :
 				$_POST['action'] = 'update';
 				$add_sql .= " now=2 where idx='{$_POST['idx']}'";
-				$msg = "´ë¿©µÇ¾ú½À´Ï´Ù.";
+				$msg = "ëŒ€ì—¬ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			
-			//¹İ³³´ë±â
+			//ë°˜ë‚©ëŒ€ê¸°
 			case 'return' :
 				$_POST['action'] = 'update';
 				$add_sql .= " now=3 where idx='{$_POST['idx']}'";
-				$msg = "¹İ³³½ÅÃ» µÇ¾ú½À´Ï´Ù.";
+				$msg = "ë°˜ë‚©ì‹ ì²­ ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = "{$get_pgae}now/";
 			break;
 			
-			//¹İ³³
+			//ë°˜ë‚©
 			case 'clear' :
 				$_POST['action'] = 'delete';
 				$add_sql .= " idx = '{$_POST['idx']}'";
 				$re = fetch("select * from reser where idx='{$_POST['idx']}'");
 				$fur = fetch("select * from furniture where idx='{$re['fidx']}'");
 				sql("update furniture set num=num+{$re['re']} where idx='{$_POST['idx']}'");
-				$msg = "¹İ³³µÇ¾ú½À´Ï´Ù.";
+				$msg = "ë°˜ë‚©ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
         }
-		//Äõ¸®
+		//ì¿¼ë¦¬
 		$cancel .= "action/idx/";
 		$column = get_column($_POST, $cancel);
 		query($_POST['action'], "reser", "{$column} {$add_sql}");
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//í˜ì´ì§€ì´ë™
 		if($msg) alert($msg);
 		move($url);
 	}

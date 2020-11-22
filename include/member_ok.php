@@ -1,40 +1,40 @@
 <?
 	if($_POST['action']){
-		//ºñ¹Ð¹øÈ£ ¾ÏÈ£È­
+		//ë¹„ë°€ë²ˆí˜¸ ì•”í˜¸í™”
 		if($_POST['pw']) $_POST['pw'] = md5($_POST['pw']);
 		if($_POST['re_pw']) $_POST['re_pw'] = md5($_POST['re_pw']);
 		
-		//¾×¼Ç °ª¿¡ µû¶ó °Ë»ç
+		//ì•¡ì…˜ ê°’ì— ë”°ë¼ ê²€ì‚¬
 		switch($_POST['action']){
 			case 'insert' :
 				$member = total("select * from member where email='{$_POST['email']}'");
-				access($member == 0, "ÀÌ¹Ì µî·ÏµÈ ÀÌ¸ÞÀÏÀÔ´Ï´Ù.");
+				access($member == 0, "ì´ë¯¸ ë“±ë¡ëœ ì´ë©”ì¼ìž…ë‹ˆë‹¤.");
 				$add_sql .= ", lv=1";
-				$msg = "È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+				$msg = "íšŒì›ê°€ìž…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			case 'pw_change':
 				$_POST['action'] = "update";
 				$member = fetch("select * from member where email='{$_SESSION['email']}'");
-				access($_POST['pw'] == $member['pw'], "ÇöÀç ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+				access($_POST['pw'] == $member['pw'], "í˜„ìž¬ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				$_POST['pw'] = $_POST['re_pw'];
 				$cancel .= "re_pw/";
-				$msg = "ºñ¹Ð¹øÈ£°¡ º¯°æµÇ¾ú½À´Ï´Ù.";
+				$msg = "ë¹„ë°€ë²ˆí˜¸ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			case 'update':
 				$add_sql .= " where email='{$_POST['email']}'";
-				$msg = "¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+				$msg = "ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 		}
 		
-		//Äõ¸®
+		//ì¿¼ë¦¬
 		$cancel .= "action/";
 		$column = get_column($_POST, $cancel);
 		query($_POST['action'], "member", "{$column} {$add_sql}");
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//íŽ˜ì´ì§€ì´ë™
 		if($msg) alert($msg);
 		move($url);
 	}

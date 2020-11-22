@@ -1,30 +1,30 @@
 <?
 	if($_POST['action']){
-		//ºñ¹Ð¹øÈ£ ¾ÏÈ£È­
+		//é®è«›è¸° ëª…
 		if($_POST['pw']) $_POST['pw'] = md5($_POST['pw']);
 		if($_POST['re_pw']) $_POST['re_pw'] = md5($_POST['re_pw']);
 		$_POST = arr_change($_POST);
 		
-		//¾×¼Ç °ª¿¡ µû¶ó °Ë»ç
+		//â‰ª åª› ê³• å¯ƒ
 		switch($_POST['action']){
 			case 'insert' :
 				$add_sql .= ", sidx='{$sidx}', date=now()";
-				$msg = "°Ô½Ã±ÛÀÌ ÀÛ¼º¿Ï·áµÇ¾ú½À´Ï´Ù.";
+				$msg = "å¯ƒæ¹² ê¹†çŒ·ë“¬.";
 				$url = $get_page;
 			break;
 			case 'update' :
 				$add_sql .= " where idx='{$idx}'";
-				$msg = "°Ô½Ã±ÛÀÌ ¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+				$msg = "å¯ƒæ¹² ë“¬.";
 				$url = "{$get_page}view/{$idx}/";
 			break;
 		}
 		
-		//Äõ¸®
+		//è‘ì‡°â”
 		$cancel .= "action/";
 		$column = get_column($_POST, $cancel);
 		query($_POST['action'], "board", "{$column} {$add_sql}");
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//ëŒëŒ€
 		if($msg) alert($msg);
 		move($url);
 	}

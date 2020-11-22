@@ -1,6 +1,6 @@
 <?
 	if($_POST['action']){
-		//ÆÄÀÏ ¾÷·Îµå
+		//íŒŒì¼ ì—…ë¡œë“œ
 		if(is_uploaded_file($_FILES['file']['tmp_name'])){
 			$file_name = file_uploaded($_FILES['file']);
 			$file = $_FILES['file']['name'];
@@ -8,39 +8,39 @@
 			@unlink("{$_SERVER['DOCUMENT_ROOT']}/furniture/{$_POST['up_file']}");
 		}
 		
-		//¾×¼Ç °ª¿¡ µû¶ó °Ë»ç
+		//ì•¡ì…˜ ê°’ì— ë”°ë¼ ê²€ì‚¬
 		switch($_POST['action']){
-			//°¡±¸½ÅÃ»
+			//ê°€êµ¬ì‹ ì²­
 			case 'hope' :
 				$_POST['action'] = "insert"; 
 				$add_sql .= ", now=0, name='{$_SESSION['name']}', email='{$_SESSION['email']}'";
-				$msg = "°¡±¸ ½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.";
+				$msg = "ê°€êµ¬ ì‹ ì²­ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			
-			//°¡±¸Ãß°¡
+			//ê°€êµ¬ì¶”ê°€
 			case 'add' :
 				$_POST['action'] = "insert"; 
 				$add_sql .= ", now=1";
-				$msg = "°¡±¸°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.";
+				$msg = "ê°€êµ¬ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 			
-			//Èñ¸Á°¡±¸ Ãß°¡
+			//í¬ë§ê°€êµ¬ ì¶”ê°€
 			case 'hope_add' :
 				$_POST['action'] = 'update';
 				$add_sql .= " now=1, name='', email='' where idx='{$_POST['idx']}'";
-				$msg = "Ãß°¡µÇ¾ú½À´Ï´Ù.";
+				$msg = "ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.";
 				$url = $get_page;
 			break;
 		}
 		
-		//Äõ¸®
+		//ì¿¼ë¦¬
 		$cancel .= "action/idx/";
 		$column = get_column($_POST, $cancel);
 		query($_POST['action'], "furniture", "{$column} {$add_sql}");
 		
-		//ÆäÀÌÁöÀÌµ¿
+		//íŽ˜ì´ì§€ì´ë™
 		if($msg) alert($msg);
 		move($url);
 	}

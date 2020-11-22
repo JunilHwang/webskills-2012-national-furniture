@@ -1,8 +1,8 @@
 <?
-	//세션 시작
+	//몄 
 	session_start();
 	
-	//주소값 저장
+	//二쇱媛 
 	$get = explode("/", $_SERVER['PATH_INFO']);
 	$page_type = $get[1];
 	$midx = $get[2];
@@ -14,15 +14,15 @@
 	$get_page = "/index.php/{$page_type}/{$midx}/{$sidx}/";
 	$current = $page_type && $midx && $sidx ? 'sub' : 'main';
 	
-	//DB접속
+	//DB
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/dbcon.php");
 	
-	//메시지 출력
+	//硫吏 異
 	function alert($str){
 		echo "<script type=\"text/javascript\">alert('{$str}')</script>";
 	}
 	
-	//페이지 이동
+	//댁 대
 	function move($str){
 		echo "<script type='text/javascript'>";
 			echo $str ? "document.location.replace('{$str}')" : "history.back();";
@@ -30,7 +30,7 @@
 		exit;
 	}
 	
-	//엑세스
+	//몄
 	function access($bool, $msg, $url=false){
 		if(!$bool){
 			alert($msg);
@@ -38,14 +38,14 @@
 		}
 	}
 	
-	//이메일 부호화
+	//대 遺명
 	function hex2($str){
 		$strlen = strlen($str);
 		for($i=0; $i<$strlen; $i++) $hex.= "&#x".bin2hex(substr($str, $i, 1)).';';
 		return $hex;
 	}
 	
-	//본문 이메일 부호화
+	//蹂몃Ц 대 遺명
 	function hex($str){
 		preg_match_all("([a-zA-z0-9]+@[a-zA-z0-9]+\.[a-zA-z0-9._-]+)", $str, $a, PREG_SET_ORDER);
 		for($i=0; $i<sizeof($i); $i++){
@@ -54,13 +54,13 @@
 		return $str;
 	}
 	
-	//자동 이메일 부호화
+	// 대 遺명
 	function arr_hex($arr){
 		foreach($arr as $key=>$val) $arr[$key] = hex($val);
 		return $arr;
 	}
 	
-	//보안
+	//蹂댁
 	function str_change($str){
 		$str = preg_replace("!<script(.*?)<\/script>!is", "", $str);
 		$str = preg_replace("!<iframe(.*?)<\/iframe>!is", "", $str);
@@ -71,13 +71,13 @@
 		return $str;
 	}
 	
-	//자동보안
+	//蹂댁
 	function arr_change($arr){
 		foreach($arr as $key=>$val) $arr[$key] = str_change($val);
 		return $arr;
 	}
 	
-	//인코딩
+	//몄
 	function encode($str){
 		$str = base64_encode($str);
 		$str = str_replace('/', '^2', $str);
@@ -85,7 +85,7 @@
 		return $str;
 	}
 	
-	//디코딩
+	//肄
 	function decode($str){
 		$str = str_replace('^2', '/', $str);
 		$str = str_replace('$4', '+', $str);
@@ -93,13 +93,13 @@
 		return $str;
 	}
 	
-	//글자수 제한
+	//湲 
 	function cut($str, $stt, $len){
 		$strlen = strlen($str);
 		return $strlen > $len ? mb_substr($str, $stt, $len / 2, "utf-8") . "..." : $str;
 	}
 	
-	//페이징
+	//댁
 	function page_nate($num, $total, $url, $prev, $next, $line=5){
 		$url = explode("&&", $url);
 		$last_page = ceil($total/$line);
@@ -129,11 +129,11 @@
 		return $page_nate;
 	}
 	
-	//파일 업로드
+	// 濡
 	function file_uploaded($file){
 		$chk = strtolower(array_pop(explode(".", basename($file['name']))));
 		$chk_name = array('jpeg', 'jpg', 'png', 'gif');
-		access(in_array($chk, $chk_name), "이미지 파일만 업로드가 가능합니다.");
+		access(in_array($chk, $chk_name), "대몄 쇰 濡媛 媛ν⑸.");
 		$file_name = time()."_".rand().".{$chk}";
 		$dir = "{$_SERVER['DOCUMENT_ROOT']}/data/furniture/{$file_name}";
 		$thum_dir = "{$_SERVER['DOCUMENT_ROOT']}/data/furniture/thum_{$file_name}";
@@ -144,7 +144,7 @@
 		return $file_name;
 	}
 	
-	//비율조정
+	//鍮⑥“
 	function resize($w, $h){
 		$s = 150;
 		if($w > $h){
@@ -163,7 +163,7 @@
 		return $resize;
 	}
 	
-	//썸네일
+	//몃ㅼ
 	function thum($dir, $thum_dir, $type, $w, $h){
 		$size = getimagesize($dir);
 		$n_name = imagecreatetruecolor($w,$h);
@@ -187,12 +187,12 @@
 		}
 	}
 	
-	//하이라이팅
+	//대쇱댄
 	function hit($str, $key){
 		$str = str_replace($key, "<span class='hit'>{$key}</span>", $str);
 		return $str;
 	}
 	
-	//가구분류
-	$furniture_arr = array('책상','의자','옷장','서랍장','책장','탁자');
+	//媛援щ瑜
+	$furniture_arr = array('梨','','룹','','梨','');
 ?>

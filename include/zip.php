@@ -1,10 +1,10 @@
 <?
-	//zip ÀÎÅ¬·çµå
+	//zip ì¸í´ë£¨ë“œ
 	include_once("{$_SERVER['DOCUMENT_ROOT']}/include/zip.lib.php");
 	
 	$zip = new zipfile();
 	
-	//CSV ¸¸µé±â
+	//CSV ë§Œë“¤ê¸°
 	$file_name = time()."_".rand();
 	$fur = fetch("select * from furniture where idx='{$_POST['fidx']}' ");
 	$dir1 = "{$_SERVER['DOCUMENT_ROOT']}/data/csv/{$file_name}.csv";
@@ -14,30 +14,30 @@
 	$name2 = basename($dir2);
 	$name3 = basename($dir3);
 	
-	//ÆÄÀÏ¾²±â
+	//íŒŒì¼ì“°ê¸°
 	$member = fetch("select * from member where email='{$_SESSION['email']}' ");
-	$content = "ÀÌ¸§,ÀÌ¸ÞÀÏ,ÀüÈ­¹øÈ£,ÇÚµåÆù¹øÈ£\r\n";
+	$content = "ì´ë¦„,ì´ë©”ì¼,ì „í™”ë²ˆí˜¸,í•¸ë“œí°ë²ˆí˜¸\r\n";
 	$content .= "{$member['name']},{$member['email']},{$member['phone']},{$member['cell']}\r\n";
 	$fp = fopen($dir1, "w");
 	fwrite($fp, $content);
 	fclose($fp);
 	
 	$content = "
-°¡±¸ºÐ·ù : {$fur['type']}\r\n
-°¡±¸¸í : {$fur['fname']}\r\n
-°¡±¸¼ö·® : {$fur['num']}\r\n
-°¡±¸¼³¸í : {$fur['content']}\r\n
+ê°€êµ¬ë¶„ë¥˜ : {$fur['type']}\r\n
+ê°€êµ¬ëª… : {$fur['fname']}\r\n
+ê°€êµ¬ìˆ˜ëŸ‰ : {$fur['num']}\r\n
+ê°€êµ¬ì„¤ëª… : {$fur['content']}\r\n
 	";
 	$fp = fopen($dir2, "w");
 	fwrite($fp, $content);
 	fclose($fp);
 	
-	//ÆÄÀÏ»çÀÌÁî
+	//íŒŒì¼ì‚¬ì´ì¦ˆ
 	$size1 = filesize($dir1);
 	$size2 = filesize($dir2);
 	$size3 = filesize($dir3);
 	
-	//ÆÄÀÏ ÀÐ±â
+	//íŒŒì¼ ì½ê¸°
 	$fr = fopen($dir1, "rb", false);
 	$data = fread($fr, $size1);
 	$zip->addFile($data, $name1);
@@ -53,7 +53,7 @@
 	$zip->addFile($data, $name3);
 	fclose($fr);	
 	
-	//ÁýÆÄÀÏ»ý¼º
+	//ì§‘íŒŒì¼ìƒì„±
 	$zip_dir = "{$_SERVER['DOCUMENT_ROOT']}/data/zip/{$file_name}.zip";
 	$fd = fopen($zip_dir, "wb");
 	fwrite($fd, $zip->file());

@@ -1,8 +1,8 @@
 <?php
 
-	/*----------------- mysql 함수 -----------------*/
+	/*----------------- mysql ⑥ -----------------*/
 	function sql($str){
-    //DB접속
+    //DB
     $db = new PDO("sqlite:". dirname(__DIR__) ."/001.db");
 		$result = $db->query($str);
 		$db = null;
@@ -40,5 +40,5 @@
 		$query = implode("", $query);
 		sql($query);
 	}
-	/*----------------- //mysql 함수 -----------------*/
+	/*----------------- //mysql ⑥ -----------------*/
 ?>
